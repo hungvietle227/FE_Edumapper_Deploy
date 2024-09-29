@@ -16,7 +16,7 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 import QuestionTable from "./QuestionTable";
 import CreateQuestionModal from "./CreateQuestionModal";
 import AddQuestionPassage from "./AddQuestionPassage";
-import { GetAllQuestion } from "../../../api/QuestionApi";
+import { GetQuestionByFilter } from "../../../api/QuestionApi";
 export default function ViewQuestion() {
   const [totalPages, setTotalPages] = useState();
   const [page, setPage] = React.useState(1);
@@ -32,7 +32,7 @@ export default function ViewQuestion() {
   const [filter, setFilter] = useState("");
   useEffect(() => {
     const getAllMemberShip = async () => {
-      const response = await GetAllQuestion(page, pageSize, filter);
+      const response = await GetQuestionByFilter(page, pageSize, filter);
       if (response.ok) {
         const responseJson = await response.json();
         const data = responseJson.metaData;
