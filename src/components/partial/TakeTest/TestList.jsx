@@ -19,6 +19,8 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import { GetAllTest } from "../../../api/TestManageApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import PageNavigation from "../../global/PageNavigation";
+import PageSize from "../../global/PageSize";
 
 export default function TestList() {
   const [selectedType, setSelectedType] = useState("");
@@ -119,6 +121,35 @@ export default function TestList() {
               </Grid>
             ))}
         </Grid>
+        {data && data.length > 0 && (
+        <>
+          <div
+            style={{
+              position: "relative",
+              minHeight: "80px",
+            }}
+          >
+            <ul
+              style={{
+                marginTop: "28px",
+                marginBottom: "10px",
+                position: "absolute",
+                left: "50%",
+                transform: "translate(-50%)",
+              }}
+            >
+              <PageNavigation
+                page={page}
+                setPage={setPage}
+                totalPages={totalPages}
+              />
+            </ul>
+            <ul style={{ float: "right", marginTop: "12px" }}>
+              <PageSize pageSize={pageSize} setPageSize={setPageSize} />
+            </ul>
+          </div>
+        </>
+      )}
       </Box>
     </Container>
   );
