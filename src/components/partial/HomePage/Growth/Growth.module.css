@@ -1,0 +1,20 @@
+.package_container{
+  width: 100%;
+  position: relative;
+  top: -32%;
+  
+}
+.package_content{
+  padding: 3rem;
+}
+
+@media (max-width: 1629px) {
+  .package_container{
+    top: -82%;
+  }
+}
+@media (max-width: 1629px) {
+  .top_package{
+    height: 30rem !important;
+  }
+}

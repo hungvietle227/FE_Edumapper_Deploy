@@ -1,0 +1,339 @@
+{
+  "Tests": [
+    {
+      "TestID": 1,
+      "CreatedDate": "2023-09-01",
+      "UpdatedDate": "2023-09-01",
+      "Type": "IELTS Reading",
+      "Description": "IELTS Academic Reading Test",
+      "IsRequired": true,
+      "Exams": [
+        {
+          "ExamId": 101,
+          "ExamName": "Reading Test 1",
+          "NumOfQuestions": 12,
+          "TestID": 1,
+          "Passages": [
+            {
+              "PassageId": 1001,
+              "PassageTitle": "Climate Change and Coastal Erosion",
+              "PassageContent": {
+                "A": "Shipping logistics have played a crucial role in global trade for centuries, but modern advancements in technology have brought about significant changes. Automated tracking systems now allow companies to monitor the movement of cargo in real time, increasing efficiency and reducing the chances of lost shipments. However, this technology also presents challenges, such as cybersecurity risks that must be addressed.",
+                "B": "The shipping industry has also had to adapt to new environmental regulations aimed at reducing emissions. Many companies are investing in eco-friendly ships that utilize cleaner fuels or even alternative power sources, such as electric or hybrid engines. Despite the costs involved, these investments are seen as essential for the long-term sustainability of the industry.",
+                "C": "One of the most pressing issues in the shipping industry today is the shortage of skilled workers. As older generations of workers retire, there are fewer younger people entering the field. Companies are now investing in training programs and collaborating with educational institutions to attract new talent and fill the gap.",
+                "D": "In addition to workforce challenges, the industry faces fluctuations in demand. Global events, such as economic downturns or pandemics, can drastically affect the need for shipping services. Companies must be agile and prepared to adjust their strategies quickly in order to remain competitive in this volatile market.",
+                "E": "Despite these challenges, the shipping industry continues to be a critical component of the global economy. As the world becomes more interconnected, the demand for fast, reliable shipping solutions will only increase, pushing the industry to innovate and overcome the hurdles it faces."
+              },
+              "SubQuestions": [
+                {
+                  "QuestionId": 10001,
+                  "QuestionType": "multiple_choice",
+                  "QuestionText": "What is the main impact of climate change on coastal regions?",
+                  "CorrectAnswer": "Increased erosion",
+                  "Choices": [
+                    {
+                      "ChoiceId": 1,
+                      "ChoiceContent": "Increased erosion"
+                    },
+                    {
+                      "ChoiceId": 2,
+                      "ChoiceContent": "Reduced tourism"
+                    },
+                    {
+                      "ChoiceId": 3,
+                      "ChoiceContent": "Improved biodiversity"
+                    },
+                    {
+                      "ChoiceId": 4,
+                      "ChoiceContent": "Enhanced beach formation"
+                    }
+                  ]
+                },
+                {
+                  "QuestionId": 10002,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "_ are exclusively offered to girls in the feeding programme.",
+                  "CorrectAnswer": "Scholarships"
+                },
+                {
+                  "QuestionId": 10003,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "Instead of going to school, many children in poverty are sent to collect ______ in the fields.",
+                  "CorrectAnswer": "firewood"
+                },
+                {
+                  "QuestionId": 10004,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "The pass rate at Meskeni has risen to _ with the help of the feeding programme.",
+                  "CorrectAnswer": "85%"
+                },
+                {
+                  "QuestionId": 10005,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "Since the industrial revolution, the size of the modern human has grown by _.",
+                  "CorrectAnswer": "10 cm"
+                },
+                {
+                  "QuestionId": 20001,
+                  "QuestionText": "Category is a summer event",
+                  "QuestionType": "heading_matching",
+                  "CorrectAnswer": "v",
+                  "Choices": [
+                    {
+                      "ChoiceId": "i",
+                      "ChoiceContent": "The best moment to migrate"
+                    },
+                    {
+                      "ChoiceId": "ii",
+                      "ChoiceContent": "The unexplained rejection of closer feeding ground"
+                    },
+                    {
+                      "ChoiceId": "iii",
+                      "ChoiceContent": "The influence of weather on the migration route"
+                    },
+                    {
+                      "ChoiceId": "iv",
+                      "ChoiceContent": "Physical characteristics that allow birds to migrate"
+                    },
+                    {
+                      "ChoiceId": "v",
+                      "ChoiceContent": "The main reason why birds migrate"
+                    }
+                  ]
+                },
+                {
+                  "QuestionId": 20002,
+                  "QuestionType": "heading_matching",
+                  "QuestionText": "Paragraph 2",
+                  "CorrectAnswer": "ii",
+                  "Choices": [
+                    {
+                      "ChoiceId": "i",
+                      "ChoiceContent": "The best moment to migrate"
+                    },
+                    {
+                      "ChoiceId": "ii",
+                      "ChoiceContent": "The unexplained rejection of closer feeding ground"
+                    },
+                    {
+                      "ChoiceId": "iii",
+                      "ChoiceContent": "The influence of weather on the migration route"
+                    },
+                    {
+                      "ChoiceId": "iv",
+                      "ChoiceContent": "Physical characteristics that allow birds to migrate"
+                    },
+                    {
+                      "ChoiceId": "v",
+                      "ChoiceContent": "The main reason why birds migrate"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "PassageId": 1002,
+              "PassageTitle": "The History of Coffee",
+              "PassageContent": {
+                "A": "The global shipping industry is the backbone of international trade, transporting goods across oceans and continents. Over 90% of the world's trade is carried out by sea, making it a critical part of the global economy. Shipping has evolved over centuries, from small wooden boats to massive cargo ships that carry thousands of containers. The efficiency of this system relies on carefully coordinated schedules, port logistics, and international regulations that ensure smooth operations.",
+                "B": "In recent years, the shipping industry has faced increasing pressure to reduce its environmental impact. The burning of heavy fuel oils by large vessels contributes significantly to air pollution and greenhouse gas emissions. To combat this, new regulations have been introduced, such as the International Maritime Organization's (IMO) sulfur cap, which limits the amount of sulfur in the fuel used by ships. Many companies are now exploring cleaner energy options like liquefied natural gas (LNG) and even hydrogen-based fuels to meet these standards.",
+                "C": "Another major challenge faced by the shipping industry is the rising cost of fuel and labor. Fuel prices fluctuate regularly, directly impacting shipping costs, while labor shortages at ports and on ships have made it harder to maintain smooth operations. Automation and the use of autonomous ships are being explored as potential solutions to reduce reliance on human labor and lower costs, but widespread adoption of such technologies remains a long-term goal.",
+                "D": "The COVID-19 pandemic has also highlighted the vulnerability of global supply chains. Port closures, quarantine regulations, and reduced workforce availability have led to significant delays in shipping schedules, causing disruptions in trade. This has forced companies to rethink their supply chain strategies, with many now looking to diversify their logistics options and build more resilient systems to prevent future disruptions.",
+                "E": "Despite these challenges, the future of shipping remains promising. Technological advancements, such as real-time tracking systems, blockchain for better transparency, and AI-driven logistics optimization, are set to revolutionize the industry. As global trade continues to grow, shipping will remain a crucial pillar of the global economy, adapting to new challenges and innovations to meet the needs of a changing world."
+              },
+              "SubQuestions": [
+                {
+                  "QuestionId": 10006,
+                  "QuestionType": "multiple_choice",
+                  "QuestionText": "Where did coffee originate according to the passage?",
+                  "CorrectAnswer": "Ethiopian plateau",
+                  "Choices": [
+                    {
+                      "ChoiceId": 1,
+                      "ChoiceContent": "Ethiopian plateau"
+                    },
+                    {
+                      "ChoiceId": 2,
+                      "ChoiceContent": "Arabian Peninsula"
+                    },
+                    {
+                      "ChoiceId": 3,
+                      "ChoiceContent": "South America"
+                    },
+                    {
+                      "ChoiceId": 4,
+                      "ChoiceContent": "Southeast Asia"
+                    }
+                  ]
+                },
+                {
+                  "QuestionId": 10007,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "The goat herder who discovered coffee was named _.",
+                  "CorrectAnswer": "Kaldi"
+                }
+              ]
+            },
+            {
+              "PassageId": 1003,
+              "PassageTitle": "The Future of Artificial Intelligence",
+              "PassageContent": {
+                "A": "Healthcare systems around the world play a vital role in maintaining the well-being of populations. From advanced surgeries to routine check-ups, healthcare services ensure that people can live healthier and longer lives. Different countries adopt various models of healthcare, ranging from fully state-funded systems to private insurance-based models. Regardless of the structure, access to healthcare remains a universal concern as the demand for quality services grows with an aging population and rising chronic diseases.",
+                "B": "One of the major challenges faced by healthcare systems today is the increasing cost of medical care. Advanced technologies, new medications, and specialized treatments have improved the quality of care but have also driven up costs. In some countries, healthcare spending has skyrocketed, leading to debates on how to make healthcare more affordable and sustainable. In particular, the rising costs of elderly care and long-term treatment for chronic diseases place a heavy burden on both individuals and healthcare providers.",
+                "C": "Technological advancements, however, have also opened new doors for improving healthcare. Telemedicine, wearable health devices, and AI-driven diagnostics are revolutionizing patient care. Telemedicine allows patients to consult with doctors remotely, which became especially crucial during the COVID-19 pandemic. Wearable devices track vital signs, enabling individuals to monitor their health in real-time. AI systems are now being used to detect diseases such as cancer earlier and with greater accuracy, potentially saving lives.",
+                "D": "Despite these advancements, there are still significant disparities in access to healthcare. In rural and underserved areas, the lack of hospitals, clinics, and healthcare professionals limits the ability of individuals to receive necessary care. Moreover, socioeconomic factors such as income, education, and employment can greatly affect a person's access to healthcare services. In many parts of the world, vulnerable populations, including migrants and the homeless, face significant barriers in receiving care.",
+                "E": "The future of healthcare is likely to be shaped by both technological innovations and policy changes. Governments and healthcare providers will need to focus on creating more equitable systems that ensure access to care for all citizens. Furthermore, personalized medicine, where treatments are tailored to the individual’s genetic makeup, is set to become more prevalent, offering more effective and targeted healthcare solutions. The combination of technology and inclusivity will be key to addressing the growing challenges faced by healthcare systems in the coming decades."
+              },
+              "SubQuestions": [
+                {
+                  "QuestionId": 10008,
+                  "QuestionType": "multiple_choice",
+                  "QuestionText": "What is one of the concerns mentioned about the advancement of AI?",
+                  "CorrectAnswer": "Job displacement",
+                  "Choices": [
+                    {
+                      "ChoiceId": 1,
+                      "ChoiceContent": "Job displacement"
+                    },
+                    {
+                      "ChoiceId": 2,
+                      "ChoiceContent": "Environmental impact"
+                    },
+                    {
+                      "ChoiceId": 3,
+                      "ChoiceContent": "Increased healthcare costs"
+                    },
+                    {
+                      "ChoiceId": 4,
+                      "ChoiceContent": "Reduced educational opportunities"
+                    }
+                  ]
+                },
+                {
+                  "QuestionId": 10009,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "AI has the potential to solve some of humanity's most _ challenges.",
+                  "CorrectAnswer": "pressing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ExamId": 102,
+          "ExamName": "Listening Test 1",
+          "NumOfQuestions": 8,
+          "TestID": 1,
+          "Passages": [
+            {
+              "PassageId": 1001,
+              "PassageTitle": "Denham's Shipping Agency Form",
+              "PassageContent": {
+                "AudioClip": "/src/assets/thienlyoi.mp3"
+              },
+              "SubQuestions": [
+                {
+                  "QuestionId": 10001,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "Name: Tim _",
+                  "CorrectAnswer": "Johnson"
+                },
+                {
+                  "QuestionId": 10002,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "Address to be collected from: _ University",
+                  "CorrectAnswer": "Bristol"
+                },
+                {
+                  "QuestionId": 10003,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "Postcode: _",
+                  "CorrectAnswer": "BN1 1AL"
+                },
+                {
+                  "QuestionId": 10004,
+                  "QuestionType": "fill_in_blank",
+                  "QuestionText": "Size of container: _",
+                  "CorrectAnswer": "20 cubic meters"
+                }
+              ]
+            },
+            {
+              "PassageId": 1002,
+              "PassageTitle": "Booking a Hotel Room",
+              "PassageContent": {
+                "AudioClip": "/src/assets/lazy-girl-145417.mp3"
+              },
+              "SubQuestions": [
+                {
+                  "QuestionId": 10005,
+                  "QuestionType": "multiple_choice",
+                  "QuestionText": "What type of room did the customer book?",
+                  "CorrectAnswer": "Double Room",
+                  "Choices": [
+                    {
+                      "ChoiceId": 1,
+                      "ChoiceContent": "Single Room"
+                    },
+                    {
+                      "ChoiceId": 2,
+                      "ChoiceContent": "Double Room"
+                    },
+                    {
+                      "ChoiceId": 3,
+                      "ChoiceContent": "Suite"
+                    },
+                    {
+                      "ChoiceId": 4,
+                      "ChoiceContent": "Family Room"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ExamId": 103,
+          "ExamName": "Writing Test 1",
+          "NumOfQuestions": 2,
+          "TestID": 2,
+          "Passages": [
+            {
+              "PassageId": 2001,
+              "PassageTitle": "Task 1: Writing",
+              "PassageContent": {
+                "TaskDescription": "The chart below shows the percentage of households in owned and rented accommodation in England and Wales between 1918 and 2011."
+              },
+              "SubQuestions": [
+                {
+                  "QuestionId": 20001,
+                  "QuestionType": "writing_task_1",
+                  "QuestionText": "Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+                  "WordLimit": "150",
+                  "CorrectAnswer": ""
+                }
+              ]
+            },
+            {
+              "PassageId": 2002,
+              "PassageTitle": "Task 2: Writing",
+              "PassageContent": {
+                "TaskDescription": "Some people believe that the increasing use of technology in the workplace leads to a decrease in social interaction among employees."
+              },
+              "SubQuestions": [
+                {
+                  "QuestionId": 20002,
+                  "QuestionType": "writing_task_2",
+                  "QuestionText": "To what extent do you agree or disagree with this opinion? Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+                  "WordLimit": "250",
+                  "CorrectAnswer": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
