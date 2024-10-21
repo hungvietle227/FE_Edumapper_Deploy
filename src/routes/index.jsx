@@ -32,7 +32,6 @@ import ChatPage from "../pages/ChatPage/ChatPage";
 import DashboardPage from "../pages/DashboardPage/DashboardPage";
 import TestManagePage from "../pages/TestManagePage/TestManagePage";
 import TestListPage from "../pages/TakeTestPage/TestListPage";
-import TestResult from "../components/partial/UserTesting/TestResult";
 import TestResultPage from "../pages/TestResult/TestResultPage";
 import RequireAuth from "../Guard/RequireAuth";
 import ErrorException from "../components/global/ErrorException";
