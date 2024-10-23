@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Button,
@@ -69,11 +68,7 @@ export default function TakeTestFree() {
         <Grid item xs={6} sm={3}>
           <Card className={styles.testCard}>
             <HeadphonesIcon className={styles.icon} />
-            <Typography variant="h6">Listening</Typography>
-            <div className={styles.progressContainer}>
-              <CircularProgress variant="determinate" value={50} size={60} />
-              <Typography className={styles.progressText}>0%</Typography>
-            </div>
+            <Typography variant="h6" mb={5}>Listening</Typography>
             <Button
               variant="contained"
               style={{ background: "#73fbfd" }}
@@ -89,11 +84,7 @@ export default function TakeTestFree() {
         <Grid item xs={6} sm={3}>
           <Card className={styles.testCard}>
             <MenuBook className={styles.icon2} />
-            <Typography variant="h6">Reading</Typography>
-            <div className={styles.progressContainer}>
-              <CircularProgress variant="determinate" value={50} size={60} />
-              <Typography className={styles.progressText}>0%</Typography>
-            </div>
+            <Typography variant="h6" mb={5}>Reading</Typography>
             <Button
               variant="contained"
               color="secondary"
@@ -110,11 +101,7 @@ export default function TakeTestFree() {
         <Grid item xs={6} sm={3}>
           <Card className={styles.premiumCard}>
             <Create className={styles.icon3} />
-            <Typography variant="h6">Writing</Typography>
-            <div className={styles.progressContainer}>
-              <CircularProgress variant="determinate" value={50} size={60} />
-              <Typography className={styles.progressText}>0%</Typography>
-            </div>
+            <Typography variant="h6" mb={5}>Writing</Typography>
             <Button
               variant="contained"
               color="secondary"
@@ -131,11 +118,7 @@ export default function TakeTestFree() {
         <Grid item xs={6} sm={3}>
           <Card className={styles.premiumCard}>
             <Mic className={styles.icon4} />
-            <Typography variant="h6">Speaking</Typography>
-            <div className={styles.progressContainer}>
-              <CircularProgress variant="determinate" value={50} size={60} />
-              <Typography className={styles.progressText}>0%</Typography>
-            </div>
+            <Typography variant="h6" mb={5}>Speaking</Typography>
             <Button
               variant="contained"
               color="secondary"

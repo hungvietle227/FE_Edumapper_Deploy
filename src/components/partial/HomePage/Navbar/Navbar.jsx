@@ -244,17 +244,17 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Thi thử",
+    label: "Thư viện đề",
     children: [
       {
-        label: "Thi thử miễn phí",
-        subLabel: "Listening và Reading",
+        label: "Các đề thi có sẵn",
+        subLabel: "Đa dạng đề",
         href: "/list-test",
       },
       {
-        label: "Thi thử premium",
+        label: "Đề thi premium",
         subLabel: "Mua gói để làm được full tính năng",
-        href: "/package",
+        href: "/list-test-premium",
       },
     ],
   },

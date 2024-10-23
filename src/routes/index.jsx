@@ -35,6 +35,7 @@ import TestListPage from "../pages/TakeTestPage/TestListPage";
 import TestResultPage from "../pages/TestResult/TestResultPage";
 import RequireAuth from "../Guard/RequireAuth";
 import ErrorException from "../components/global/ErrorException";
+import TestListPrePage from "../pages/TakeTestPage/TestListPrePage";
 
 export const router = createBrowserRouter([
   {
@@ -76,7 +77,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorException/>
   },
   {
-    path: "/english-center-detail",
+    path: "/english-center-detail/:id",
     element: <CenterDetailPage />,
     errorElement: <ErrorException/>
   },
@@ -96,7 +97,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorException/>
   },
   {
-    path: "/take-testPre/:testId",
+    path: "/take-test-premium/:testId",
     element: <TakeTestPrePage />,
     errorElement: <ErrorException/>
   },
@@ -216,4 +217,9 @@ export const router = createBrowserRouter([
     element: <TestResultPage />,
     errorElement: <ErrorException/>
   },
+  {
+    path: "/list-test-premium",
+    element: <TestListPrePage />,
+    errorElement: <ErrorException/>
+  }
 ]);

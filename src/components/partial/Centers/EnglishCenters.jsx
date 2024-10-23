@@ -11,10 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function EnglishCenters(pros) {
   const navigate = useNavigate();
-  const { centers } = pros;
-  const handleNavigate = () => {
-    navigate("/english-center-detail")
-  }
+  const { centers, handleViewDetail } = pros;
   return (
     <Grid container spacing={3}>
       {centers.map((center, index) => (
@@ -41,7 +38,7 @@ export default function EnglishCenters(pros) {
                 <Button
                   variant="contained"
                   color="success"
-                  onClick={handleNavigate}
+                  onClick={() => handleViewDetail(center.id)}
                   sx={{ marginRight: 1 }}
                 >
                   Thông tin chi tiết

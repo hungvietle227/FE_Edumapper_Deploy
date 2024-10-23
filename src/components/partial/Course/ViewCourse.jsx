@@ -22,37 +22,37 @@ export default function ViewCourse() {
       name: "Khóa học IELTS cơ bản",
       location: "Hà Nội",
       description: "Khóa học IELTS từ 4.0 đến 6.5+",
-      imageUrl: "/img/trungtam3.png",
+      imageUrl: "https://ieltsxuanphi.edu.vn/wp-content/uploads/2022/04/Khoa-hoc-IELTS-tron-goi-4-ky-nang-co-ban-cho-Beginner.jpg",
     },
     {
       name: "Khóa học giao tiếp",
       location: "TP. Hồ Chí Minh",
       description: "Khóa học dành cho người mới bắt đầu",
-      imageUrl: "/img/trungtam4.png",
+      imageUrl: "https://mshoagiaotiep.com/uploads/images/userfiles/2020/08/lotrinhkhtructuyen.png",
     },
     {
       name: "Khóa học TOEIC cấp tốc",
       location: "Đà Nẵng",
       description: "Khóa học TOEIC từ 500 đến 750+ trong 2 tháng",
-      imageUrl: "/img/trungtam5.png",
+      imageUrl: "https://khokhoahoc.org/wp-content/uploads/2022/06/Share-Khoa-hoc-Luyen-thi-TOEIC-cap-toc-de-moi-Khoa-1-Cung-Toeic-Moi-Ngay.png",
     },
     {
       name: "Khóa học tiếng Anh cho Cty",
       location: "Hà Nội",
       description: "Khóa học tiếng Anh chuyên biệt cho môi trường kinh doanh",
-      imageUrl: "/img/trungtam5.png",
+      imageUrl: "https://www.britishcouncil.vn/sites/default/files/630x354-myclass-ta-cho-doanh-nghiep.jpg",
     },
     {
       name: "Khóa học tiếng Anh trẻ em",
       location: "TP. Hồ Chí Minh",
       description: "Khóa học tiếng Anh cho trẻ từ 6 đến 12 tuổi",
-      imageUrl: "/img/trungtam2.webp",
+      imageUrl: "https://koreanhalong.edu.vn/data/media/1113/images/banner3-04T-01.png",
     },
     {
       name: "Khóa học IELTS nâng cao",
       location: "Hà Nội",
       description: "Khóa học IELTS từ 6.5+ đến 8.0",
-      imageUrl: "/img/trungtam2.webp",
+      imageUrl: "https://betterway.vn/wp-content/uploads/2023/07/Khoa-ielts-5.0-6.0.png",
     },
   ];
   

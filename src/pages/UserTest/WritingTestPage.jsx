@@ -2,13 +2,20 @@ import { useEffect, useState } from "react";
 import HeaderTesting from "../../components/global/HeaderTesting";
 import TestProgress from "../../components/partial/UserTesting/PartQuestion";
 import WritingTest from "../../components/partial/UserTesting/WritingTest";
-import { useParams } from "react-router-dom";
-import {  GetWritingTest } from "../../api/TestManageApi";
+import { useNavigate, useParams } from "react-router-dom";
+import {  GetWritingTest, SaveAnswer, StartTest, SubmitAnswer } from "../../api/TestManageApi";
+import { toast } from "react-toastify";
+import useAuth from "../../hooks/useAuth";
+import StatusCode from "../../utils/StautsCode";
+import Messages from "../../utils/Message";
 function WritingTestPage() {
   let { testId } = useParams();
   const [passages, setPassages] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [currentPassage, setCurrentPassage] = useState(0);
+  const navigate = useNavigate();
+  const {user} = useAuth();
+  const [examId, setExamId] = useState("");
 
   useEffect(() => {
     const fetchTestData = async () => {
@@ -16,16 +23,47 @@ function WritingTestPage() {
         const response = await GetWritingTest(testId);
         const data = await response.json();
         const test = data.metaData;
+        if (test[0].exams.length == 0){
+          toast.error("No data")
+          navigate('/list-test')
+          return;
+        }
+        const startTest = {
+          examId: test[0]?.exams[0]?.examId,
+          userId: user.id
+        }
+        await StartTest(startTest)
         setPassages(test[0]?.exams[0]?.passages);
+        setExamId(test[0]?.exams[0]?.examId)
+
       } catch (error) {
         console.error("Error fetching test data:", error);
       }
     };
     fetchTestData();
-  }, [testId]);
+  }, [testId, navigate, user]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     console.log(selectedAnswers);
+    const answers = {
+      answers: selectedAnswers
+  }
+    console.log(answers);
+    const data = {
+      examId: examId,
+      userId: user.id
+    }
+    const response = await SaveAnswer(answers);
+    const response2 = await SubmitAnswer(data);
+    console.log(response);
+    console.log(response2);
+    if (response.status == StatusCode.CREATED && response2.status == StatusCode.UPDATED){
+      toast.success(Messages.SUCCESS.SUCCESS_TEST)
+      navigate(`/test-result/${examId}`)
+    }else {
+      toast.error(Messages.ERROR.FAIL_TEST)
+      // navigate('/test-result')
+    }
   };
 
   const handlePassageChange = (index) => {
@@ -55,7 +93,7 @@ function WritingTestPage() {
       );
 
       const newAnswer = {
-        userId: "test",
+        userId: user?.id,
         questionId: questionId,
         choiceId: null, // Bỏ qua choiceId cho phần viết
         userChoice: userChoice || "", // Đảm bảo có giá trị mặc định là chuỗi rỗng

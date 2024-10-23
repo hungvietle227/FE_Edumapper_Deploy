@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 export default function FilterCenters(pros) {
-  const { filter, handleChangeFilter, onFilter } = pros;
+  const { filter, handleChangeFilter, applyFilter } = pros;
   return (
     <>
       <Grid
@@ -26,9 +26,10 @@ export default function FilterCenters(pros) {
               value={filter.type || ""}
               onChange={(e) => handleChangeFilter("type", e.target.value)}
             >
-              <MenuItem value="All">Tất cả</MenuItem>
-              <MenuItem value="Offline">Học trực tiếp</MenuItem>
-              <MenuItem value="Online">Học online</MenuItem>
+              <MenuItem value="">Tất cả</MenuItem>
+              <MenuItem value="offline">Học trực tiếp</MenuItem>
+              <MenuItem value="online">Học online</MenuItem>
+              <MenuItem value="both">Both</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -40,10 +41,10 @@ export default function FilterCenters(pros) {
               value={filter.location || ""}
               onChange={(e) => handleChangeFilter("location", e.target.value)}
             >
-              <MenuItem value="All">Tất cả</MenuItem>
-              <MenuItem value="HCM">TP. Hồ Chí Minh</MenuItem>
-              <MenuItem value="HN">Hà Nội</MenuItem>
-              <MenuItem value="DN">Đà Nẵng</MenuItem>
+              <MenuItem value="">Tất cả</MenuItem>
+              <MenuItem value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</MenuItem>
+              <MenuItem value="Hà Nội">Hà Nội</MenuItem>
+              <MenuItem value="Đà Nẵng">Đà Nẵng</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -62,6 +63,7 @@ export default function FilterCenters(pros) {
               borderRadius: "8px",
               textTransform: "none",
             }}
+            onClick={applyFilter}
           >
             Lọc
           </Button>
