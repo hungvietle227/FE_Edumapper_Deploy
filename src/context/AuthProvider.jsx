@@ -97,26 +97,26 @@ function AuthProvider({ children }) {
         const responseJson = await response.json();
         const user = responseJson.metaData;
         console.log(responseJson.metaData);
-
-        if (
-          user.roleName == "Admin" &&
-          accessToken &&
-          isValidToken(accessToken)
-        ) {
-          dispatch({
-            type: "INITIALIZE",
-            payload: {
-              isAuthenticated: true,
-              user: user,
-            },
-          });
+        if (user == null) {
+          const responseIsAdmin = await GetUserByToken();
+          console.log(responseIsAdmin);
+          if (
+            responseIsAdmin.metaData.roleName == "Administrator" && isValidToken(accessToken)) {
+            dispatch({
+              type: "INITIALIZE",
+              payload: {
+                isAuthenticated: true,
+                user: responseIsAdmin.metaData,
+              },
+            });
+          }
         } else if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken, refreshToken);
           const { email } = jwtDecode(accessToken);
           const response = await GetUserByEmail(email);
           const responseJson = await response.json();
           const user = responseJson.metaData;
-          if (user.emailConfirmed == false && user.roleName != "Admin") {
+          if (user.emailConfirmed == false && user.roleName != "Administrator") {
             console.log(user.emailConfirmed);
             dispatch({
               type: "SEND_OTP",
@@ -189,7 +189,7 @@ function AuthProvider({ children }) {
     const { accessToken, refreshToken, user } = responseJson.metaData;
     //localStorage.setItem("accessToken", accessToken);
     console.log(user);
-    if (user.roleName == "Admin") {
+    if (user.roleName == "Administrator") {
       window.localStorage.setItem("accessToken", accessToken);
       dispatch({
         type: "LOGIN",
@@ -199,7 +199,7 @@ function AuthProvider({ children }) {
       });
       return;
     }
-    if (user.emailConfirmed == false) {
+    if (user.emailConfirmed == false && user.roleName != "Administrator") {
       dispatch({
         type: "SEND_OTP",
         payload: {

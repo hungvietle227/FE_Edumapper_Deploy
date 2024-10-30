@@ -17,6 +17,7 @@ import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import ArticleIcon from "@mui/icons-material/Article";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import QuizIcon from '@mui/icons-material/Quiz';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 export default function Sidebar() {
   const { user } = useAuth();
   const Menus = [
@@ -68,6 +69,13 @@ export default function Sidebar() {
       icon: <QuestionAnswerIcon />,
       id: 98,
       src: "/question-management",
+    },
+    {
+      title: "Giao dịch",
+      path: "/transaction-management",
+      icon: <AccountBalanceIcon />,
+      id: 36,
+      src: "/transaction-management",
     },
   ];
   if (user?.roleName === "Moderator") {

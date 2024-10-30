@@ -33,7 +33,7 @@ export default function ProfileMenu() {
   };
 
   const handleNavigate = () => {
-    if (user?.roleName == "Admin") {
+    if (user?.roleName == "Administrator") {
         setAnchorEl(null);
         navigate('/dashboard')
     } else if (user?.roleName == "Tutor") {
@@ -46,7 +46,7 @@ export default function ProfileMenu() {
   };
 
   const handleClickLogout = async () => {
-    if (user?.roleName == "Admin") {
+    if (user?.roleName == "Administrator") {
       await logout();
       navigate("/");
     }

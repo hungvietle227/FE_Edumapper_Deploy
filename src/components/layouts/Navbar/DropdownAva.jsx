@@ -17,7 +17,7 @@ export default function BasicMenu({ anchorEl, handleClick, handleClose, children
         }
     }
     const handleClickLogout = async () => {
-        if (user?.roleName == "Admin") {
+        if (user?.roleName == "Administrator") {
             await logout();
             navigate("/")
         }

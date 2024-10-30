@@ -7,7 +7,7 @@ export default function GuestAuth({ children }) {
     if (isAuthenticated) {
         if (user && user?.roleName == "Moderator") {
             return <Navigate to="/personal-profile" />;
-        } else if (user && (user?.roleName == "Admin")) {
+        } else if (user && (user?.roleName == "Administrator")) {
             return <Navigate to="/dashboard" />;
         } else if (user && user?.roleName == "Tutor" && (user?.status == "Pending")) {
             return <Navigate to="/RegisterTutor" />;

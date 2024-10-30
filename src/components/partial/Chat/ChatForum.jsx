@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react"; // Thêm useRef
-import * as signalR from "@microsoft/signalr";
 import {
   Box,
   Button,
@@ -212,7 +211,7 @@ export default function ChatForum() {
                           fontWeight="bold"
                           marginRight={1}
                         >
-                          {msg.userName + ":"}
+                          {msg.fullName + ":"}
                         </Typography>
                         <>{msg.content}</>
                       </>

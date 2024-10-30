@@ -36,12 +36,13 @@ import TestResultPage from "../pages/TestResult/TestResultPage";
 import RequireAuth from "../Guard/RequireAuth";
 import ErrorException from "../components/global/ErrorException";
 import TestListPrePage from "../pages/TakeTestPage/TestListPrePage";
+import TransactionPage from "../pages/TransactionPage/TransactionPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <RoleBasedGuard accessibleRoles={["Customer", "Admin"]}>
+      <RoleBasedGuard accessibleRoles={["Customer", "Administrator"]}>
         <HomePage />
       </RoleBasedGuard>
     ),
@@ -129,7 +130,7 @@ export const router = createBrowserRouter([
     path: "personal-profile",
     element: (
       // <RoleBasedGuard
-      //   accessibleRoles={["Customer", "Admin", "Moderator"]}
+      //   accessibleRoles={["Customer", "Administrator", "Moderator"]}
       //   status="Active"
       // >
       <CustomerPage />
@@ -148,7 +149,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/membership",
-    element: <RoleBasedGuard accessibleRoles={["Admin", "Customer"]}> <MemberShipPage /> </RoleBasedGuard>,
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <MemberShipPage /> </RoleBasedGuard>,
     errorElement: <ErrorException/>
   },
   {
@@ -163,12 +164,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/question-management",
-    element: <QuestionPage />,
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <QuestionPage /> </RoleBasedGuard>,
     errorElement: <ErrorException/>
   },
   {
     path: "/passage-management",
-    element: <PassagePage />,
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}><PassagePage /></RoleBasedGuard>,
     errorElement: <ErrorException/>
   },
   {
@@ -189,7 +190,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/exam-management",
-    element: <ExamPage />,
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}><ExamPage /></RoleBasedGuard>,
     errorElement: <ErrorException/>
   },
   {
@@ -199,12 +200,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardPage />,
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}><DashboardPage /></RoleBasedGuard>,
     errorElement: <ErrorException/>
   },
   {
     path: "/test-management",
-    element: <TestManagePage />,
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <TestManagePage /> </RoleBasedGuard>,
     errorElement: <ErrorException/>
   },
   {
@@ -221,5 +222,10 @@ export const router = createBrowserRouter([
     path: "/list-test-premium",
     element: <TestListPrePage />,
     errorElement: <ErrorException/>
-  }
+  },
+  {
+    path: "/transaction-management",
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <TransactionPage /> </RoleBasedGuard>,
+    errorElement: <ErrorException/>
+  },
 ]);

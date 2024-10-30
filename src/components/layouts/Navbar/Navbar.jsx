@@ -23,7 +23,7 @@ export default function Navbar() {
           <NotifyBell />
         </Stack>
         <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-          {user?.roleName != "Admin" && (
+          {user?.roleName != "Administrator" && (
             <BasicMenu
               anchorEl={anchorEl}
               handleClick={handleClick}
@@ -42,7 +42,7 @@ export default function Navbar() {
               />
             </BasicMenu>
           )}
-          {user?.roleName == "Admin" && (
+          {user?.roleName == "Administrator" && (
             <BasicMenu
               anchorEl={anchorEl}
               handleClick={handleClick}
@@ -61,7 +61,7 @@ export default function Navbar() {
               />
             </BasicMenu>
           )}
-          <span>{user?.roleName != "Admin" ? user?.fullname : "Admin"}</span>
+          <span>{user?.roleName != "Administrator" ? user?.fullname : "Administrator"}</span>
         </div>
       </div>
     </div>
