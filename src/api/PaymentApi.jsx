@@ -1,8 +1,8 @@
 // Base Url for API
 const baseUrl = import.meta.env.VITE_API_HOST;
-export const PaymentVnPay = async (value) => {
+export const CreatePayment = async (value) => {
     try {
-        const response = await fetch(`${baseUrl}/api/Payment/vnpay`, {
+        const response = await fetch(`${baseUrl}/api/Payment`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const PaymentVnPay = async (value) => {
 
 export const ResponsePayment = async (value) => {
     try {
-        const response = await fetch(`${baseUrl}/api/Payment/vnpay/handle-response`, {
+        const response = await fetch(`${baseUrl}/api/Payment/handle-response`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

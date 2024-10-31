@@ -50,8 +50,39 @@
 
 .exitTest {
   color: #fff !important;
+  background-color: #e74c3c !important; /* Màu đỏ */
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 8px rgba(231, 76, 60, 0.4); /* Đổ bóng nhẹ */
+}
+
+.exitTest:hover {
+  background-color: #c0392b !important; /* Màu đậm hơn khi hover */
+  transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
 }
 
 .submit {
   color: #fff !important;
+  background-color: #2db164 !important; /* Màu xanh */
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 8px rgba(46, 204, 113, 0.4); /* Đổ bóng nhẹ */
+}
+
+.submit:hover {
+  background-color: #27ae60 !important; /* Màu đậm hơn khi hover */
+  transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
+}
+
+.exitTest:active, .submit:active {
+  transform: scale(0.95); /* Hiệu ứng nhấn xuống */
+  box-shadow: none; /* Bỏ đổ bóng khi nhấn */
 }

@@ -255,7 +255,7 @@ const NAV_ITEMS = [
       {
         label: "Đề thi premium",
         subLabel: "Mua gói để làm được full tính năng",
-        href: "/list-test-premium",
+        href: "/package",
       },
     ],
   },

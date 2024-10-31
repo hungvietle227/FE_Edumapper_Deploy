@@ -42,7 +42,7 @@ import {
       "Trạng thái",
       "Email",
     ];
-    const StatusType = ["Paid", "Cancel", "Pending"];
+    const StatusType = ["Đang chờ", "Cancel", "Đã thanh toán"];
     return (
       <div>
         <TableContainer component={Paper}>
@@ -125,13 +125,13 @@ import {
                             if (row.status == type) {
                               let styleName;
                               switch (type) {
-                                case "Paid":
+                                case "Đã thanh toán":
                                   styleName = styles.completed;
                                   break;
                                 case "Cancel":
                                   styleName = styles.rejected;
                                   break;
-                                case "Pending":
+                                case "Đang chờ":
                                   styleName = styles.pendingConfirmation;
                                   break;
                                 default:

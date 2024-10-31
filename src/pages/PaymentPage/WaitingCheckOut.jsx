@@ -16,25 +16,43 @@ function WaitingCheckout() {
   const [paymentStatus, setPaymentStatus] = useState("pending");
 
   useEffect(() => {
-    console.log(user);
     const queryParams = window.location.search;
-    const cleanQuery = queryParams.replace("?", "");
-    const urlParams = new URLSearchParams(cleanQuery);
+    const urlParams = new URLSearchParams(queryParams);
+
     const vnp_OrderInfo = urlParams.get("vnp_OrderInfo");
     const vnp_ResponseCode = urlParams.get("vnp_ResponseCode");
     const vnp_TransactionNo = urlParams.get("vnp_TransactionNo");
 
-    const processPayment = async () => {
-      const isSuccess = vnp_ResponseCode === "00";
-      const status = isSuccess ? "success" : "fail";
-      const data = {
-        userId: user?.id,
-        transactionInfo: vnp_OrderInfo,
-        transactionNumber: vnp_TransactionNo,
-        isSuccess: isSuccess,
-      };
+    const pos_orderCode = urlParams.get("orderCode");
+    const pos_status = urlParams.get("status");
 
-      if (user?.id) {
+    const processPayment = async () => {
+      let data = null;
+      let isSuccess = false;
+
+      if (vnp_OrderInfo && vnp_ResponseCode && vnp_TransactionNo) {
+        // Xử lý thanh toán VNPAY
+        isSuccess = vnp_ResponseCode === "00";
+        data = {
+          userId: user?.id,
+          transactionInfo: vnp_OrderInfo,
+          transactionNumber: vnp_TransactionNo,
+          isSuccess,
+        };
+      } else if (pos_orderCode && pos_status) {
+        // Xử lý thanh toán PAYOS
+        isSuccess = !(pos_status === "CANCELLED");
+        data = {
+          userId: user?.id,
+          transactionInfo: isSuccess ? "Mua thành công" : "Mua thất bại",
+          transactionNumber: pos_orderCode,
+          isSuccess,
+        };
+      }
+
+      const status = isSuccess ? "success" : "fail";
+
+      if (data && user?.id) {
         try {
           const postMethod = await ResponsePayment(data);
           if (postMethod.ok) {
@@ -80,7 +98,7 @@ function WaitingCheckout() {
         <Box className="status-payment">
           <Alert
             severity="error"
-            style={{ fontSize: "35px", display: "flex", alignItems: "center" }}
+            style={{ fontSize: "35px", display: "flex", alignItems: "center", textAlign: "center"}}
           >
             Thanh toán thất bại
           </Alert>

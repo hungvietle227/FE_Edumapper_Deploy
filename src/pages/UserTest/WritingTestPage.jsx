@@ -16,6 +16,7 @@ function WritingTestPage() {
   const navigate = useNavigate();
   const {user} = useAuth();
   const [examId, setExamId] = useState("");
+  const [timeRemaining, setTimeRemaining] = useState(3600); // 3600s = 60 minutes in seconds
 
   useEffect(() => {
     const fetchTestData = async () => {
@@ -122,7 +123,7 @@ function WritingTestPage() {
         className="fixed top-0 left-0 right-0 z-10"
         style={{ border: "1px solid #dcdcdc" }}
       >
-        <HeaderTesting handleSubmit={handleSubmit} />
+        <HeaderTesting handleSubmit={handleSubmit} timeRemaining={timeRemaining} setTimeRemaining={setTimeRemaining} />
       </div>
       <div
         className="flex-1 mt-[60px] overflow-y-auto"

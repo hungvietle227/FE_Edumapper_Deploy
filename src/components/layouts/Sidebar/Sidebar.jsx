@@ -18,6 +18,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import QuizIcon from '@mui/icons-material/Quiz';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
 export default function Sidebar() {
   const { user } = useAuth();
   const Menus = [
@@ -77,6 +78,13 @@ export default function Sidebar() {
       id: 36,
       src: "/transaction-management",
     },
+    {
+      title: "Lịch hẹn nghe",
+      path: "/request-speaking",
+      icon: <PendingActionsIcon />,
+      id: 66,
+      src: "/request-speaking",
+    }
   ];
   if (user?.roleName === "Moderator") {
     Menus.push(

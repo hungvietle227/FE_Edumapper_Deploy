@@ -127,11 +127,11 @@ export default function ViewTransaction() {
             onChange={(event) => setStatusTransaction(event.target.value)}
             label="Trạng thái"
           >
-            <MenuItem value="Paid">
-              <p>Paid</p>
+            <MenuItem value="Đã thanh toán">
+              <p>Đã thanh toán</p>
             </MenuItem>
-            <MenuItem value="Pending">
-              <p>Pending</p>
+            <MenuItem value="Đang chờ">
+              <p>Đang chờ</p>
             </MenuItem>
           </Select>
         </FormControl>

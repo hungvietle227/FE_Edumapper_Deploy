@@ -22,7 +22,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { MDBCardText, MDBCol, MDBRow } from "mdb-react-ui-kit";
 import { Favorite } from "@mui/icons-material";
-import { PaymentVnPay } from "../../api/PaymentApi";
+import { CreatePayment } from "../../api/PaymentApi";
 import useAuth from "../../hooks/useAuth";
 import HeaderCheckout from "../../components/layouts/Layouts_Payment/HeaderCheckout";
 import FooterCheckOut from "../../components/layouts/Layouts_Payment/FooterCheckout";
@@ -69,13 +69,13 @@ const Checkout = () => {
       paymentMethod: methodPayment,
       memberShipId: memberShipBuy?.memberShipId,
     };
-    console.log(formBuyCoin);
     try {
-      const response = await PaymentVnPay(formBuyCoin);
+      const response = await CreatePayment(formBuyCoin);
       if (response.status == StatusCode.CREATED) {
         const responseData = await response.json();
-        console.log(responseData);
-        if (responseData.statusCode == StatusCode.CREATED) {
+        if (responseData.statusCode == StatusCode.CREATED && methodPayment == "PAYOS") {
+          window.location.replace(responseData.metaData.checkoutUrl);
+        }else if (responseData.statusCode == StatusCode.CREATED && methodPayment == "Vnpay"){
           window.location.replace(responseData.metaData);
         } else {
           toast.error(responseData.message);
@@ -279,7 +279,6 @@ const Checkout = () => {
                   style={{
                     padding: "20px",
                     width: "90%",
-                    height: "88%",
                     background: "white",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
@@ -342,6 +341,23 @@ const Checkout = () => {
                           VNPay
                         </Box>
                       }
+                      style={{ color: "black", marginBottom: "25px" }}
+                    />
+                    <FormControlLabel
+                      value="PAYOS"
+                      control={<Radio />}
+                      label={
+                        <Box display="flex" alignItems="center">
+                          <img
+                            className="me-2"
+                            width="30px"
+                            style={{ height: "25px" }}
+                            src="https://payos.vn/docs/img/logo.svg"
+                            alt="PayOS logo"
+                          />
+                          PayOS
+                        </Box>
+                      }
                       style={{ color: "black" }}
                     />
                   </RadioGroup>
@@ -369,6 +385,25 @@ const Checkout = () => {
                       width="90px"
                       style={{ height: "25px" }}
                       src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-VNPAY-QR-1.png"
+                      alt="PayPal acceptance mark"
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "1px solid black",
+                      height: "35px",
+                      marginTop: "25px",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    <img
+                      className="me-2"
+                      width="90px"
+                      style={{ height: "24px" }}
+                      src="https://payos.vn/docs/img/logo.svg"
                       alt="PayPal acceptance mark"
                     />
                   </div>

@@ -37,6 +37,7 @@ import RequireAuth from "../Guard/RequireAuth";
 import ErrorException from "../components/global/ErrorException";
 import TestListPrePage from "../pages/TakeTestPage/TestListPrePage";
 import TransactionPage from "../pages/TransactionPage/TransactionPage";
+import RequestListeningPage from "../pages/RequestListening/RequestListeningPage";
 
 export const router = createBrowserRouter([
   {
@@ -118,7 +119,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/listening-test/:testId",
-    element: <RequireAuth> <ListeningTestPage /> </RequireAuth>,
+    element: <RequireAuth><ListeningTestPage /></RequireAuth> ,
     errorElement: <ErrorException/>
   },
   {
@@ -182,10 +183,10 @@ export const router = createBrowserRouter([
     element: <ContactPage />,
     errorElement: <ErrorException/>
   },
-  { path: "/payment", element: <Checkout />, errorElement: <ErrorException/>  },
+  { path: "/payment",  element: <RequireAuth> <Checkout /> </RequireAuth>, errorElement: <ErrorException/>  },
   {
     path: "/waiting-checkout",
-    element: <WaitingCheckout />,
+    element: <RequireAuth> <WaitingCheckout /> </RequireAuth>,
     errorElement: <ErrorException/>
   },
   {
@@ -228,4 +229,9 @@ export const router = createBrowserRouter([
     element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <TransactionPage /> </RoleBasedGuard>,
     errorElement: <ErrorException/>
   },
+  {
+    path: "/request-speaking",
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <RequestListeningPage /> </RoleBasedGuard>,
+    errorElement: <ErrorException/>
+  }
 ]);

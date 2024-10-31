@@ -4,7 +4,6 @@ import TestProgress from "../../components/partial/UserTesting/PartQuestion";
 import ReadingTest from "../../components/partial/UserTesting/ReadingTest";
 import { GetReadingTest, SaveAnswer, StartTest, SubmitAnswer } from "../../api/TestManageApi";
 import { useNavigate, useParams } from "react-router-dom";
-import NoDataPage from "../../components/global/NoDataPage";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import StatusCode from "../../utils/StautsCode";
@@ -17,6 +16,7 @@ function UserTestPage() {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [currentPassage, setCurrentPassage] = useState(0);
   const [examId, setExamId] = useState("");
+  const [timeRemaining, setTimeRemaining] = useState(3600); // 3600s = 60 minutes in seconds
 
   useEffect(() => {
     const fetchTestData = async () => {
@@ -121,7 +121,7 @@ function UserTestPage() {
         className="fixed top-0 left-0 right-0 z-10"
         style={{ border: "1px solid #dcdcdc" }}
       >
-        <HeaderTesting handleSubmit={handleSubmit} />
+        <HeaderTesting handleSubmit={handleSubmit} timeRemaining={timeRemaining} setTimeRemaining={setTimeRemaining} />
       </div>
       <div
         className="flex-1 mt-[60px] overflow-y-auto"

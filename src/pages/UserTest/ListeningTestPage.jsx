@@ -15,6 +15,7 @@ function ListeningTestPage() {
   const [currentPassage, setCurrentPassage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [examId, setExamId] = useState("");
+  const [timeRemaining, setTimeRemaining] = useState(3600); // 3600s = 60 minutes in seconds
   const navigate = useNavigate();
   const {user} = useAuth();
   useEffect(() => {
@@ -120,7 +121,7 @@ function ListeningTestPage() {
         className="fixed top-0 left-0 right-0 z-10"
         style={{ border: "1px solid #dcdcdc" }}
       >
-        <HeaderTesting handleSubmit={handleSubmit} />
+        <HeaderTesting handleSubmit={handleSubmit} timeRemaining={timeRemaining} setTimeRemaining={setTimeRemaining} />
       </div>
       <div
         className="flex-1 mt-[60px] overflow-y-auto"
