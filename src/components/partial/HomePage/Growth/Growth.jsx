@@ -95,7 +95,7 @@ const Growth = () => {
             }}
           >
             {memberShip?.metaData.map((plan, index) => (
-              <Grid item xs={12} sm={6} md={6} custom={3} key={index}>
+              <Grid item xs={12} sm={6} md={6} custom={4} key={index}>
                 <Paper
                   elevation={3}
                   sx={{

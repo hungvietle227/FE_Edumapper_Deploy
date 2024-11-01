@@ -72,3 +72,40 @@
     display: flex;
     justify-content: center;
 }
+
+.eduMapperSection {
+    text-align: center;
+    margin-top: 48px;
+  }
+  
+  .eduMapperTitle {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .eduMapperBrand {
+    color: #4caf50;
+  }
+  
+  .upgradeImageContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .upgradeImage {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+  }
+  
+  .upgradeButton {
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .upgradeButton:hover {
+    background-color: #388e3c;
+  }

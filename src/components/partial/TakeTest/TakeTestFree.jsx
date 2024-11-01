@@ -4,16 +4,23 @@ import {
   Grid,
   Typography,
   Card,
-  CircularProgress,
 } from "@mui/material";
 import { MenuBook, Create, Mic } from "@mui/icons-material"; // Import icons từ MUI
 import HeadphonesIcon from "@mui/icons-material/Headphones";
 import styles from "./TakeTest.module.css"; // Import CSS Module
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Messages from "../../../utils/Message";
 
 export default function TakeTestFree() {
   let { testId } = useParams();
   const navigate = useNavigate();
+  const handleClickWriting = () => {
+    toast.warning(Messages.ERROR.CAN_NOT_WRITING)
+  }
+  const handleClickSpeaking = () => {
+    toast.warning(Messages.ERROR.CAN_NOT_SPEAKING)
+  }
   return (
     <Box className={styles.root}>
       {/* Breadcrumb */}
@@ -107,7 +114,7 @@ export default function TakeTestFree() {
               color="secondary"
               style={{ background: "#f29d38" }}
               className={styles.testButton}
-              onClick={() => navigate(`/writing-test/${testId}`)}
+              onClick={() => handleClickWriting()}
             >
               Take Test
             </Button>
@@ -124,7 +131,7 @@ export default function TakeTestFree() {
               color="secondary"
               style={{ background: "#ea3ef7" }}
               className={styles.testButton}
-              onClick={() => alert('Đã đặt lịch vui lòng chờ Email')}
+              onClick={() => handleClickWriting()}
             >
               Take Test
             </Button>

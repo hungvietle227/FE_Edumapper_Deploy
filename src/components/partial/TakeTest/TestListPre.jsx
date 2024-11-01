@@ -16,11 +16,13 @@ import {
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import GroupIcon from "@mui/icons-material/Group";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import { GetAllTest } from "../../../api/TestManageApi";
+import { GetAllPremiumTest } from "../../../api/TestManageApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import PageNavigation from "../../global/PageNavigation";
 import PageSize from "../../global/PageSize";
+import ScoreBoard from "./ScoreBoard";
+import useAuth from "../../../hooks/useAuth";
 
 export default function TestListPre() {
   const [selectedType, setSelectedType] = useState("");
@@ -28,10 +30,11 @@ export default function TestListPre() {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(5);
   const [data, setData] = useState();
+  const {user} = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     const getAllQuestion = async () => {
-      const response = await GetAllTest(page, pageSize);
+      const response = await GetAllPremiumTest(page, pageSize, user.id);
       if (response.ok) {
         const responseJson = await response.json();
         const data = responseJson.metaData.data;
@@ -42,7 +45,7 @@ export default function TestListPre() {
       }
     };
     getAllQuestion();
-  }, [page, totalPages, pageSize]);
+  }, [page, totalPages, pageSize, user]);
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -149,7 +152,14 @@ export default function TestListPre() {
             </ul>
           </div>
         </>
-      )}
+        )}
+        <hr/>
+        <ScoreBoard />
+        <div className="text-center mt-3">
+          <Button variant="contained" color="secondary">
+            Làm mới
+          </Button>
+        </div>
       </Box>
     </Container>
   );

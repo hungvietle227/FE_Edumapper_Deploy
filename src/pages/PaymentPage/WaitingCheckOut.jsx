@@ -59,9 +59,9 @@ function WaitingCheckout() {
             const responseData = await postMethod.json();
             if (responseData.statusCode === StatusCode.CREATED) {
               if (isSuccess) {
-                window.location.href = "/";
+                //window.location.href = "/";
               } else {
-                toast.error(Messages.ERROR.PAYMENT);
+                console.log("Error");
               }
             } else {
               console.log(responseData.message);

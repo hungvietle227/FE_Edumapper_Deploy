@@ -81,7 +81,7 @@ const Checkout = () => {
           toast.error(responseData.message);
         }
       } else {
-        toast.error("Bạn đang sử dụng gói này rồi");
+        toast.error("Bạn hiện đang sở hữu một gói trong tài khoản");
       }
     } catch (error) {
       console.log("Network error" + error);

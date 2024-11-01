@@ -21,6 +21,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import PageNavigation from "../../global/PageNavigation";
 import PageSize from "../../global/PageSize";
+import useAuth from "../../../hooks/useAuth";
 
 export default function TestList() {
   const [selectedType, setSelectedType] = useState("");
@@ -28,10 +29,11 @@ export default function TestList() {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(5);
   const [data, setData] = useState();
+  const {user} = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     const getAllQuestion = async () => {
-      const response = await GetAllTest(page, pageSize);
+      const response = await GetAllTest(page, pageSize, user.id);
       if (response.ok) {
         const responseJson = await response.json();
         const data = responseJson.metaData.data;
@@ -42,7 +44,7 @@ export default function TestList() {
       }
     };
     getAllQuestion();
-  }, [page, totalPages, pageSize]);
+  }, [page, totalPages, pageSize, user]);
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -54,7 +56,7 @@ export default function TestList() {
 
   return (
     <Container maxWidth="xl">
-      <Box sx={{ padding: 4 }}>
+      <Box sx={{ padding: 4, height: "60vh" }}>
         <div className="flex gap-4 mb-4">
           <Typography variant="h4" mt={1}>
             Thư viện đề thi

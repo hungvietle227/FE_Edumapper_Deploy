@@ -28,11 +28,13 @@ const Messages = {
     REQUIRED_FIELD: "Trường này là bắt buộc!",
     INVALID_FORMAT: "Định dạng không hợp lệ!",
     PAYMENT: "Thanh toán thất bại",
-    CHOOSE_PAYMENT: "Làm ơn chọn phương thức thành toán",
+    CHOOSE_PAYMENT: "Vui lòng chọn phương thức thành toán",
     CAPTCHA: "Mã Captcha không được trùng khớp. Hãy thử lại!",
     PACKAGE: "Gói này đã được tích hợp sẵn vào tài khoản bạn rồi!",
     ALREADY_EXAM: "Đề này đã được chọn nằm trong bài kiểm tra khác rồi!",
-    FAIL_TEST: "Nộp bài không thành công"
+    FAIL_TEST: "Nộp bài không thành công",
+    CAN_NOT_WRITING: "Bạn cần nâng cấp lên gói cao hơn để làm phần thi viết này !",
+    CAN_NOT_SPEAKING: "Bạn cần nâng cấp lên gói cao hơn để làm phần thi nói này !"
   },
 };
 export default Messages;

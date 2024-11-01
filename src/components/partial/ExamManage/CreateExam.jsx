@@ -126,6 +126,7 @@ export default function CreateExam({
                         <option value="Reading">Reading</option>
                         <option value="Listening">Listening</option>
                         <option value="Writing">Writing</option>
+                        <option value="Speaking">Speaking</option>
                       </Field>
                       <ErrorMessage
                         name="examNameType"

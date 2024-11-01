@@ -4,9 +4,15 @@ import TestResult from "../../components/partial/UserTesting/TestResult";
 export default function TestResultPage() {
   return (
     <div>
-      <Navbar />
-      <TestResult />
-      <Footer />
+      <div >
+        <Navbar />
+      </div>
+      <div className="mt-5">
+        <TestResult />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

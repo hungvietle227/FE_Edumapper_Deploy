@@ -1,7 +1,14 @@
 import { Typography } from "@mui/material";
 import Growth from "../HomePage/Growth/Growth";
+import useAuth from "../../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function Package() {
+  const {user} = useAuth();
+  if (user.currentMembership != "Free"){
+    window.location.href = '/list-test-premium'
+    return;
+  }
   return (
     <div>
       <Typography

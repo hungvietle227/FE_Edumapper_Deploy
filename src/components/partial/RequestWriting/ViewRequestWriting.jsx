@@ -2,55 +2,42 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import PageNavigation from "../../global/PageNavigation";
 import PageSize from "../../global/PageSize";
-import AcceptSchedule from "./AcceptSchedule";
-import RequestTable from "./RequestListeningTable";
-import { GetAllSpeakingRequested, TeacherResponseSpeaking } from "../../../api/ExamApi";
-import StatusCode from "../../../utils/StautsCode";
-import Messages from "../../../utils/Message";
+import RequestWritingTable from "./RequestWritingTable";
+import { GetAllWritingRequest } from "../../../api/ExamApi";
+import ViewDetailWriting from "./DetailWriting";
 
-export default function ViewRequestListening() {
+export default function ViewRequestWriting() {
   const [totalPages, setTotalPages] = useState();
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(5);
   const [data, setData] = useState([]);
-  const [openAddSchedule, setOpenAddSchedule] = useState(false);
-  const [dataDetail, setDataDetail] = useState();
-  const [isAdd, setIsAdd] = useState();
+  const [openViewDetail, setOpenViewDetail] = useState(false);
+  const [dataView, setDataView] = useState();
+
   useEffect(() => {
     const fetchRequests = async () => {
-      const response = await GetAllSpeakingRequested(page, pageSize);
+      const response = await GetAllWritingRequest(page, pageSize);
       if (response.ok) {
         const responseJson = await response.json();
         const data = responseJson.metaData.data;
         setData(data);
-        setTotalPages(responseJson.metaData.data.totalPages);
+        setTotalPages(responseJson.metaData.totalPages);
       } else {
         toast.error("Error getting data");
       }
     };
     fetchRequests();
-  }, [page, pageSize, isAdd]);
+  }, [page, pageSize]);
 
-  const handleOpenAddSchedule = (item) => {
-    setOpenAddSchedule(true);
-    setDataDetail(item);
+  const handleOpenViewDetail = (item) => {
+    setOpenViewDetail(true)
+    setDataView(item)
   };
-  const handleCloseAddSchedule = async () => setOpenAddSchedule(false);
-
-  const handleAddSchedule = async (newSchedule) => {
-    const data = {
-      ...newSchedule,
-      userEmail: dataDetail?.userEmail,
-      examId: dataDetail?.examId
-    }
-    const response = await TeacherResponseSpeaking(data);
-    const responseJson = await response.json();
-    if (responseJson.statusCode == StatusCode.CREATED){
-      toast.success("Đã hẹn lại lịch thành công")
-      setIsAdd((pre) => !pre);
-    }else{
-      toast.error(Messages.ERROR.BAD_REQUEST);
-    }
+  const handleCloseViewDetail = () => setOpenViewDetail(false);
+  
+  const handleAddSchedule = (newSchedule) => {
+    console.log("Lịch hẹn mới:", newSchedule);
+    // Thêm xử lý lưu lịch hẹn ở đây
   };
 
   return (
@@ -64,10 +51,10 @@ export default function ViewRequestListening() {
       <div
         style={{ fontSize: "30px", fontWeight: "bold", marginBottom: "20px" }}
       >
-        Request Speaking
+        Request Writing
       </div>
 
-      <RequestTable data={data} handleOpenAddSchedule={handleOpenAddSchedule} />
+      <RequestWritingTable data={data} handleOpenViewDetail={handleOpenViewDetail} />
 
       {data && data.length > 0 && (
         <div style={{ position: "relative", minHeight: "80px" }}>
@@ -91,12 +78,10 @@ export default function ViewRequestListening() {
           </ul>
         </div>
       )}
-      <AcceptSchedule
-        open={openAddSchedule}
-        onClose={handleCloseAddSchedule}
-        onAdd={handleAddSchedule}
-        dataDetail={dataDetail}
-      />
+      <ViewDetailWriting         
+        open={openViewDetail}
+        onClose={handleCloseViewDetail}
+        userChoice={dataView}/>
     </div>
   );
 }

@@ -1,41 +1,24 @@
 import { useState } from "react";
-import { Modal, Box, TextField, Button } from "@mui/material";
+import { Modal, Box, TextField, Button, Typography } from "@mui/material";
 
-export default function AcceptSchedule({ open, onClose, onAdd }) {
-  const [userEmail, setUserEmail] = useState("");
-  const [scheduleDate, setScheduleDate] = useState("");
+export default function AcceptSchedule({ open, onClose, onAdd, dataDetail }) {
   const [linkMeet, setLinkMeet] = useState("");
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     const newSchedule = {
-      userEmail,
-      scheduleDate,
       linkMeet,
     };
-    onAdd(newSchedule);
-    onClose();
+    await onAdd(newSchedule);
+    await onClose();
   };
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Box sx={{ ...style, width: 400 }}>
-        <h2>Thêm lịch hẹn</h2>
-        <TextField
-          label="User Email"
-          fullWidth
-          margin="normal"
-          value={userEmail}
-          onChange={(e) => setUserEmail(e.target.value)}
-        />
-        <TextField
-          label="Schedule Date"
-          type="datetime-local"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{ shrink: true }}
-          value={scheduleDate}
-          onChange={(e) => setScheduleDate(e.target.value)}
-        />
+      <Box sx={{ ...style, width: 500 }}>
+        <h3>Hẹn lịch với thí sinh</h3>
+        <Typography variant="h6" gutterBottom mt={3}>
+          Thí sinh yêu cầu: {dataDetail?.fullName}
+        </Typography>
         <TextField
           label="Link Meet"
           fullWidth
@@ -43,9 +26,11 @@ export default function AcceptSchedule({ open, onClose, onAdd }) {
           value={linkMeet}
           onChange={(e) => setLinkMeet(e.target.value)}
         />
+        <div className="flex justify-end">
         <Button variant="contained" onClick={handleAdd} sx={{ mt: 2 }}>
-          Thêm
+          Nhận lịch
         </Button>
+        </div>
       </Box>
     </Modal>
   );

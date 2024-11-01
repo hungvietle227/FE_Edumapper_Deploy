@@ -38,6 +38,7 @@ import ErrorException from "../components/global/ErrorException";
 import TestListPrePage from "../pages/TakeTestPage/TestListPrePage";
 import TransactionPage from "../pages/TransactionPage/TransactionPage";
 import RequestListeningPage from "../pages/RequestListening/RequestListeningPage";
+import RequestWritingPage from "../pages/RequestWriting/RequestWritingPage";
 
 export const router = createBrowserRouter([
   {
@@ -232,6 +233,11 @@ export const router = createBrowserRouter([
   {
     path: "/request-speaking",
     element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <RequestListeningPage /> </RoleBasedGuard>,
+    errorElement: <ErrorException/>
+  },
+  {
+    path: "/request-writing",
+    element: <RoleBasedGuard accessibleRoles={["Administrator"]}> <RequestWritingPage /> </RoleBasedGuard>,
     errorElement: <ErrorException/>
   }
 ]);

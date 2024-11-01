@@ -3,7 +3,7 @@ import HeaderTesting from "../../components/global/HeaderTesting";
 import TestProgress from "../../components/partial/UserTesting/PartQuestion";
 import WritingTest from "../../components/partial/UserTesting/WritingTest";
 import { useNavigate, useParams } from "react-router-dom";
-import {  GetWritingTest, SaveAnswer, StartTest, SubmitAnswer } from "../../api/TestManageApi";
+import {  GetWritingTest, SaveAnswerWriting, StartTest, SubmitAnswer } from "../../api/TestManageApi";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import StatusCode from "../../utils/StautsCode";
@@ -47,20 +47,19 @@ function WritingTestPage() {
   const handleSubmit = async() => {
     console.log(selectedAnswers);
     const answers = {
-      answers: selectedAnswers
-  }
-    console.log(answers);
+      writingsAnswer: selectedAnswers
+    }
     const data = {
       examId: examId,
       userId: user.id
     }
-    const response = await SaveAnswer(answers);
+    const response = await SaveAnswerWriting(answers);
     const response2 = await SubmitAnswer(data);
     console.log(response);
     console.log(response2);
     if (response.status == StatusCode.CREATED && response2.status == StatusCode.UPDATED){
       toast.success(Messages.SUCCESS.SUCCESS_TEST)
-      navigate(`/test-result/${examId}`)
+      navigate("/")
     }else {
       toast.error(Messages.ERROR.FAIL_TEST)
       // navigate('/test-result')
@@ -96,9 +95,8 @@ function WritingTestPage() {
       const newAnswer = {
         userId: user?.id,
         questionId: questionId,
-        choiceId: null, // Bỏ qua choiceId cho phần viết
         userChoice: userChoice || "", // Đảm bảo có giá trị mặc định là chuỗi rỗng
-        description: "", // Có thể thêm mô tả tùy theo tình huống
+        description: "string", // Có thể thêm mô tả tùy theo tình huống
       };
 
       // Nếu đã có câu trả lời cho câu hỏi này, cập nhật nó

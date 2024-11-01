@@ -24,7 +24,7 @@ export default function ScoreBoard() {
   ];
 
   return (
-    <div style={{display: "flex", justifyContent: "center"}}>
+    <div style={{display: "flex", justifyContent: "center", width: "100%"}}>
       <TableContainer component={Paper} className={styles.scoreTableContainer}>
         <Typography
           variant="h6"

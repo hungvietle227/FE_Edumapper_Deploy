@@ -13,8 +13,8 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import NoDataPage from "../../global/NoDataPage";
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
-
-export default function RequestTable({ data, handleOpenAddSchedule }) {
+import VisibilityIcon from '@mui/icons-material/Visibility';
+export default function RequestWritingTable({ data, handleOpenViewDetail }) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -34,7 +34,7 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
       border: 0,
     },
   }));
-  const TableHeader = ["Email thí sinh", "Tên", "Ngày hẹn", "Hành động"];
+  const TableHeader = ["Câu hỏi", "Tên người thi", "Ngày tạo", "Hành động"];
 
   return (
     <div>
@@ -85,7 +85,7 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                       component="th"
                       scope="row"
                     >
-                      {row.userEmail}
+                      {row.questionText}
                     </StyledTableCell>
                     <StyledTableCell
                       style={{ fontWeight: "600" }}
@@ -101,7 +101,7 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                       }}
                       align="center"
                     >
-                      {row.testedDate?.slice(0,10) + row.testedDate?.slice(12,16)}
+                      {row?.createAt?.slice(0,10)}
                     </StyledTableCell>
                     <StyledTableCell
                       style={{ fontWeight: "600" }}
@@ -109,8 +109,21 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                     >
                       <Button
                         variant="contained"
+                        color="info"
+                        onClick={() => handleOpenViewDetail(row)}
+                        sx={{
+                          color: "white",
+                          borderRadius: "18px",
+                          marginRight: "15px",
+                          fontSize: "10px",
+                        }}
+                      >
+                        <VisibilityIcon /> Chi tiết
+                      </Button>
+                      <Button
+                        variant="contained"
                         color="success"
-                        onClick={() => handleOpenAddSchedule(row)}
+                        // onClick={() => handleOpenAddSchedule(row)}
                         sx={{
                           background: "#0b7234",
                           color: "white",
@@ -119,7 +132,7 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                           fontSize: "10px",
                         }}
                       >
-                        <PendingActionsIcon /> Hẹn lịch
+                        <PendingActionsIcon /> Chấm điểm
                       </Button>
                     </StyledTableCell>
                   </StyledTableRow>

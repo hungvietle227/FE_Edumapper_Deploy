@@ -7,9 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
@@ -25,7 +23,6 @@ import {
   Text,
   useBreakpointValue,
   useColorModeValue,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
@@ -43,16 +40,12 @@ import styles from "./Navbar.module.css";
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { user, isAuthenticated } = useAuth();
-  
+  console.log(user);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -77,10 +70,6 @@ function ResponsiveAppBar() {
     }
   }
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  const { isOpen, onToggle } = useDisclosure();
   const handleClick = () => {
     navigate("/login");
   };
@@ -224,54 +213,54 @@ function ResponsiveAppBar() {
   );
 }
 export default ResponsiveAppBar;
-const NAV_ITEMS = [
-  {
-    label: "Trang chủ",
-    href: "/",
-  },
-  {
-    label: "Trung tâm tiếng anh",
-    children: [
-      {
-        label: "Các Trung Tâm Tiếng Anh",
-        subLabel: "Giới thiệu trung tâm",
-        href: "/english-center",
-      },
-      {
-        label: "Các khóa học",
-        subLabel: "Đăng ký khóa học",
-        href: "/course",
-      },
-    ],
-  },
-  {
-    label: "Thư viện đề",
-    children: [
-      {
-        label: "Các đề thi có sẵn",
-        subLabel: "Đa dạng đề",
-        href: "/list-test",
-      },
-      {
-        label: "Đề thi premium",
-        subLabel: "Mua gói để làm được full tính năng",
-        href: "/package",
-      },
-    ],
-  },
-  {
-    label: "Liên hệ",
-    href: "/contact",
-  },
-  {
-    label: "Cộng đồng",
-    href: "/chat",
-  },
-];
 const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const NAV_ITEMS = [  
+    {
+      label: "Trang chủ",
+      href: "/",
+    },
+    {
+      label: "Trung tâm tiếng anh",
+      children: [
+        {
+          label: "Các Trung Tâm Tiếng Anh",
+          subLabel: "Giới thiệu trung tâm",
+          href: "/english-center",
+        },
+        {
+          label: "Các khóa học",
+          subLabel: "Đăng ký khóa học",
+          href: "/course",
+        },
+      ],
+    },
+    {
+      label: "Thư viện đề",
+      children: [
+        {
+          label: "Các đề thi có sẵn",
+          subLabel: "Đa dạng đề",
+          href: "/list-test",
+        },
+        {
+          label: "Đề thi premium",
+          subLabel: "Mua gói để làm được full tính năng",
+          href: "/package",
+        },
+      ],
+    },
+    {
+      label: "Liên hệ",
+      href: "/contact",
+    },
+    {
+      label: "Cộng đồng",
+      href: "/chat",
+    },
+  ];
 
   return (
     <Stack direction={"row"} spacing={4} zIndex={1}>
