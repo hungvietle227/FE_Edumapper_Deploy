@@ -1,5 +1,3 @@
-// src/App.js
-import ScoreBoard from "./ScoreBoard";
 import styles from "./Test.module.css";
 import { Typography, Button, Grid, Divider, Card, Box } from "@mui/material";
 import { Create, MenuBook, Mic } from "@mui/icons-material";
@@ -18,11 +16,6 @@ export default function ViewTakeTestPre() {
   let { testId } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const handleReading = () => {
-    if (user?.currentMembership == "Premium Package") {
-      toast.error(Messages.ERROR.CAN_NOT_WRITING);
-    }
-  };
   const [openAddSchedule, setOpenAddSchedule] = useState(false);
 
   const handleOpenAddSchedule = () => setOpenAddSchedule(true);
