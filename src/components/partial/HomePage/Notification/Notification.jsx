@@ -23,7 +23,6 @@ const Notification = () => {
         try {
           const data = await GetNotificationByUser("", "", user.id);
           const dataJson = await data.json();
-          console.log(dataJson);
           
           const sortedNotifications = dataJson.metaData.data.sort(
             (a, b) => new Date(b.createdTime) - new Date(a.createdTime)
