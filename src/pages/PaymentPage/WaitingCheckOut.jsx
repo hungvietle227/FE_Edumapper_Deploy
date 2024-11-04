@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
@@ -9,11 +9,11 @@ import useAuth from "../../hooks/useAuth";
 import { ResponsePayment } from "../../api/PaymentApi";
 import { toast } from "react-toastify";
 import StatusCode from "../../utils/StautsCode";
-import Messages from "../../utils/Message";
 
 function WaitingCheckout() {
   const { user } = useAuth();
   const [paymentStatus, setPaymentStatus] = useState("pending");
+  const hasProcessedPayment = useRef(false); // Flag để ngăn gọi lại processPayment
 
   useEffect(() => {
     const queryParams = window.location.search;
@@ -59,7 +59,9 @@ function WaitingCheckout() {
             const responseData = await postMethod.json();
             if (responseData.statusCode === StatusCode.CREATED) {
               if (isSuccess) {
-                //window.location.href = "/";
+                setTimeout(() => {
+                  window.location.href = "/";
+                }, 2000);
               } else {
                 console.log("Error");
               }
@@ -78,7 +80,10 @@ function WaitingCheckout() {
       setPaymentStatus(status);
     };
 
-    processPayment();
+    if (user?.id && !hasProcessedPayment.current) {
+      processPayment();
+      hasProcessedPayment.current = true;
+    }
   }, [user]);
 
   return (
@@ -98,7 +103,12 @@ function WaitingCheckout() {
         <Box className="status-payment">
           <Alert
             severity="error"
-            style={{ fontSize: "35px", display: "flex", alignItems: "center", textAlign: "center"}}
+            style={{
+              fontSize: "35px",
+              display: "flex",
+              alignItems: "center",
+              textAlign: "center",
+            }}
           >
             Thanh toán thất bại
           </Alert>

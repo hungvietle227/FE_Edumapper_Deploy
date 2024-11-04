@@ -1,11 +1,9 @@
 import style from "./style.module.css";
-import avatar from "/img/avatar.png";
 import { Stack } from "@mui/material";
 import { useState } from "react";
 import BasicMenu from "./DropdownAva";
 import useAuth from "../../../hooks/useAuth";
 import NotifyBell from "../../partial/HomePage/Notification/Notification";
-const baseUrl = import.meta.env.VITE_API_HOST;
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);

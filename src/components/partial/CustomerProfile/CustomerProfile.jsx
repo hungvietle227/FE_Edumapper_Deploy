@@ -15,7 +15,6 @@ const CustomerProfile = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (values) => {
-    console.log(values);
 
     try {
       const response = await UpdatePassword(

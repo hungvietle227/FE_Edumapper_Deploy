@@ -33,7 +33,6 @@ const pages = [
   "Liên hệ",
   "Cộng đồng",
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 import NotifyBell from "../Notification/Notification";
 import useAuth from "../../../../hooks/useAuth";
 import styles from "./Navbar.module.css";
@@ -41,7 +40,6 @@ import styles from "./Navbar.module.css";
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const { user, isAuthenticated } = useAuth();
-  console.log(user);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
