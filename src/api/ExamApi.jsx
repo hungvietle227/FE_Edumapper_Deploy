@@ -62,7 +62,7 @@ export const GetResultExam = async (userId, examId) => {
 
 export const GetAllWritingRequest = async (page, pageSize) => {
   try {
-    const url = `${baseUrl}/api/Exam/writing-answer?PageNumber=${page}&PageSize=${pageSize}`;
+    const url = `${baseUrl}/api/Exam/writing-exam-answer?PageNumber=${page}&PageSize=${pageSize}`;
     const request = {
       method: "GET",
       headers: {
@@ -124,6 +124,46 @@ export const TeacherResponseSpeaking = async (data) => {
   try {
     const response = await fetch(`${baseUrl}/api/Exam/speaking-email`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        //Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      console.error("There was a problem with API");
+    }
+    return response;
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+    throw error;
+  }
+};
+
+export const ScoreWriting = async (data) => {
+  try {
+    const response = await fetch(`${baseUrl}/api/Exam/score-writing`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        //Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      console.error("There was a problem with API");
+    }
+    return response;
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+    throw error;
+  }
+};
+
+export const TeacherScoreSpeaking = async (data) => {
+  try {
+    const response = await fetch(`${baseUrl}/api/Exam/score-reading`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         //Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

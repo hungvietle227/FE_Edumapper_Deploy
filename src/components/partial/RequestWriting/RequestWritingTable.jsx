@@ -34,7 +34,7 @@ export default function RequestWritingTable({ data, handleOpenViewDetail }) {
       border: 0,
     },
   }));
-  const TableHeader = ["Câu hỏi", "Tên người thi", "Ngày tạo", "Hành động"];
+  const TableHeader = ["Tên đề thi", "Tên người thi", "Ngày tạo", "Hành động"];
 
   return (
     <div>
@@ -85,7 +85,7 @@ export default function RequestWritingTable({ data, handleOpenViewDetail }) {
                       component="th"
                       scope="row"
                     >
-                      {row.questionText}
+                      {row.examName}
                     </StyledTableCell>
                     <StyledTableCell
                       style={{ fontWeight: "600" }}
@@ -97,7 +97,6 @@ export default function RequestWritingTable({ data, handleOpenViewDetail }) {
                       style={{
                         fontWeight: "600",
                         alignItems: "center",
-                        width: "500px",
                       }}
                       align="center"
                     >
@@ -109,21 +108,8 @@ export default function RequestWritingTable({ data, handleOpenViewDetail }) {
                     >
                       <Button
                         variant="contained"
-                        color="info"
-                        onClick={() => handleOpenViewDetail(row)}
-                        sx={{
-                          color: "white",
-                          borderRadius: "18px",
-                          marginRight: "15px",
-                          fontSize: "10px",
-                        }}
-                      >
-                        <VisibilityIcon /> Chi tiết
-                      </Button>
-                      <Button
-                        variant="contained"
                         color="success"
-                        // onClick={() => handleOpenAddSchedule(row)}
+                        onClick={() => handleOpenViewDetail(row)}
                         sx={{
                           background: "#0b7234",
                           color: "white",

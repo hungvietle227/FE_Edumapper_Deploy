@@ -220,9 +220,9 @@ export const GetSpeakingTest = async (id) => {
   }
 };
 
-export const GetAnswerWritingById = async (id) => {
+export const GetAnswerWritingById = async (userId, examId) => {
   try {
-    const url = `${baseUrl}/api/Exam/user-writing-answer?id=${id}`;
+    const url = `${baseUrl}/api/Exam/user-writing-answer?UserId=${userId}&ExamId=${examId}`;
     const request = {
       method: "GET",
       headers: {

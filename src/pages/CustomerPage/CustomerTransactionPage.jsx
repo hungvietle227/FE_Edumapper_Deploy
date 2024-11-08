@@ -21,7 +21,6 @@ export default function CustomerTransactionPage() {
             width: "255px",
             left: "0",
             borderRight: "1px solid #ddd",
-            background: "rgba(202, 234, 243, 0.28)",
           }}
         >
           <SideBarCustomer />

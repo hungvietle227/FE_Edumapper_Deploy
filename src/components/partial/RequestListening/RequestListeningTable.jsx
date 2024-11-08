@@ -13,8 +13,8 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import NoDataPage from "../../global/NoDataPage";
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
-
-export default function RequestTable({ data, handleOpenAddSchedule }) {
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+export default function RequestTable({ data, handleOpenAddSchedule, handleOpenAddScore }) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -80,7 +80,6 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                       style={{
                         fontWeight: "600",
                         textAlign: "center",
-                        width: "500px",
                       }}
                       component="th"
                       scope="row"
@@ -97,7 +96,6 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                       style={{
                         fontWeight: "600",
                         alignItems: "center",
-                        width: "500px",
                       }}
                       align="center"
                     >
@@ -109,8 +107,21 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                     >
                       <Button
                         variant="contained"
-                        color="success"
+                        color="info"
                         onClick={() => handleOpenAddSchedule(row)}
+                        sx={{
+                          color: "white",
+                          borderRadius: "18px",
+                          marginRight: "15px",
+                          fontSize: "10px",
+                        }}
+                      >
+                        <PendingActionsIcon /> Hẹn lịch
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="success"
+                        onClick={() => handleOpenAddScore(row)}
                         sx={{
                           background: "#0b7234",
                           color: "white",
@@ -119,7 +130,7 @@ export default function RequestTable({ data, handleOpenAddSchedule }) {
                           fontSize: "10px",
                         }}
                       >
-                        <PendingActionsIcon /> Hẹn lịch
+                        <CheckCircleIcon /> Chấm điểm
                       </Button>
                     </StyledTableCell>
                   </StyledTableRow>

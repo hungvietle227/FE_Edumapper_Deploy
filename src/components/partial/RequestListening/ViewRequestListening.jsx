@@ -4,9 +4,14 @@ import PageNavigation from "../../global/PageNavigation";
 import PageSize from "../../global/PageSize";
 import AcceptSchedule from "./AcceptSchedule";
 import RequestTable from "./RequestListeningTable";
-import { GetAllSpeakingRequested, TeacherResponseSpeaking } from "../../../api/ExamApi";
+import {
+  GetAllSpeakingRequested,
+  TeacherResponseSpeaking,
+  TeacherScoreSpeaking,
+} from "../../../api/ExamApi";
 import StatusCode from "../../../utils/StautsCode";
 import Messages from "../../../utils/Message";
+import ScoreStudent from "./ScoreStudent";
 
 export default function ViewRequestListening() {
   const [totalPages, setTotalPages] = useState();
@@ -14,6 +19,7 @@ export default function ViewRequestListening() {
   const [pageSize, setPageSize] = React.useState(5);
   const [data, setData] = useState([]);
   const [openAddSchedule, setOpenAddSchedule] = useState(false);
+  const [openAddScore, setOpenAddScore] = useState(false);
   const [dataDetail, setDataDetail] = useState();
   const [isAdd, setIsAdd] = useState();
   useEffect(() => {
@@ -35,20 +41,44 @@ export default function ViewRequestListening() {
     setOpenAddSchedule(true);
     setDataDetail(item);
   };
+
+  const handleOpenAddScore = (item) => {
+    setOpenAddScore(true);
+    setDataDetail(item);
+  };
+
   const handleCloseAddSchedule = async () => setOpenAddSchedule(false);
+
+  const handleCloseAddScore = async () => setOpenAddScore(false);
 
   const handleAddSchedule = async (newSchedule) => {
     const data = {
       ...newSchedule,
       userEmail: dataDetail?.userEmail,
-      examId: dataDetail?.examId
-    }
+      examId: dataDetail?.examId,
+    };
     const response = await TeacherResponseSpeaking(data);
     const responseJson = await response.json();
-    if (responseJson.statusCode == StatusCode.CREATED){
-      toast.success("Đã hẹn lại lịch thành công")
+    if (responseJson.statusCode == StatusCode.CREATED) {
+      toast.success("Đã hẹn lại lịch thành công");
       setIsAdd((pre) => !pre);
-    }else{
+    } else {
+      toast.error(Messages.ERROR.BAD_REQUEST);
+    }
+  };
+
+  const handleAddScore = async (newSchedule) => {
+    const data = {
+      ...newSchedule,
+      userId: dataDetail?.userEmail,
+      examId: dataDetail?.examId,
+    };
+    const response = await TeacherScoreSpeaking(data);
+    const responseJson = await response.json();
+    if (responseJson.statusCode == StatusCode.CREATED) {
+      toast.success("Đã chấm điểm thành công");
+      setIsAdd((pre) => !pre);
+    } else {
       toast.error(Messages.ERROR.BAD_REQUEST);
     }
   };
@@ -67,7 +97,7 @@ export default function ViewRequestListening() {
         Request Speaking
       </div>
 
-      <RequestTable data={data} handleOpenAddSchedule={handleOpenAddSchedule} />
+      <RequestTable data={data} handleOpenAddSchedule={handleOpenAddSchedule} handleOpenAddScore={handleOpenAddScore} />
 
       {data && data.length > 0 && (
         <div style={{ position: "relative", minHeight: "80px" }}>
@@ -95,6 +125,12 @@ export default function ViewRequestListening() {
         open={openAddSchedule}
         onClose={handleCloseAddSchedule}
         onAdd={handleAddSchedule}
+        dataDetail={dataDetail}
+      />
+      <ScoreStudent
+        open={openAddScore}
+        onClose={handleCloseAddScore}
+        onAdd={handleAddScore}
         dataDetail={dataDetail}
       />
     </div>

@@ -49,15 +49,8 @@ function WritingTestPage() {
     const answers = {
       writingsAnswer: selectedAnswers
     }
-    const data = {
-      examId: examId,
-      userId: user.id
-    }
     const response = await SaveAnswerWriting(answers);
-    const response2 = await SubmitAnswer(data);
-    console.log(response);
-    console.log(response2);
-    if (response.status == StatusCode.CREATED && response2.status == StatusCode.UPDATED){
+    if (response.status == StatusCode.CREATED){
       toast.success(Messages.SUCCESS.SUCCESS_TEST)
       navigate("/")
     }else {

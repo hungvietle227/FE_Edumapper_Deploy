@@ -11,7 +11,8 @@ const Messages = {
     CHANGE_PASSWORD: "Đổi mật khẩu thành công!",
     UPLOAD: "Tải lên thành công!",
     PAYMENT: "Thành toán thành công",
-    SUCCESS_TEST: "Nộp bài thành công"
+    SUCCESS_TEST: "Nộp bài thành công",
+    SCORE: "Chấm điểm thành công!",
   },
   ERROR: {
     NOT_FOUND: "Không tìm thấy tài nguyên!",

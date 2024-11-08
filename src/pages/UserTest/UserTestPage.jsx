@@ -23,7 +23,6 @@ function UserTestPage() {
       try {
         const response = await GetReadingTest(testId);
         const data = await response.json();
-        console.log(data);
         const test = data.metaData;
         if (test[0].exams.length == 0){
           toast.error("No data")
@@ -48,7 +47,6 @@ function UserTestPage() {
     const answers = {
       answers: selectedAnswers
   }
-    console.log(answers);
     const data = {
       examId: examId,
       userId: user.id

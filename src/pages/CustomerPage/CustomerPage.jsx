@@ -22,7 +22,6 @@ export default function CustomerPage() {
             width: "255px",
             left: "0",
             borderRight: "1px solid #ddd",
-            background: "rgba(202, 234, 243, 0.28)",
           }}
         >
           <SideBarCustomer />
@@ -69,7 +68,6 @@ export default function CustomerPage() {
             height: "100%",
             maxHeight: "100%",
             marginTop: "69px",
-            background: "#f2f2f2"
           }}
           className="p-4 overflow-y-auto"
         >
