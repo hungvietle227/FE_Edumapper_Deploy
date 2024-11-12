@@ -16,7 +16,7 @@ import {
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import GroupIcon from "@mui/icons-material/Group";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import { GetAllTest } from "../../../api/TestManageApi";
+import { GetAllTestFree } from "../../../api/TestManageApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import PageNavigation from "../../global/PageNavigation";
@@ -29,11 +29,11 @@ export default function TestList() {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(5);
   const [data, setData] = useState();
-  const {user} = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     const getAllQuestion = async () => {
-      const response = await GetAllTest(page, pageSize, user.id);
+      const response = await GetAllTestFree(page, pageSize, user.id);
       if (response.ok) {
         const responseJson = await response.json();
         const data = responseJson.metaData.data;
@@ -76,6 +76,17 @@ export default function TestList() {
           </FormControl>
         </div>
         <Grid container spacing={2}>
+          {data && data.length <= 0 && (
+            <>
+              <Grid item xs={12} sm={8} md={8} sx={{margin: "0 auto"}}>
+                <Card variant="outlined" sx={{ height: "100%" }}>
+                  <CardContent sx={{textAlign: "center"}}>
+                    Hiện tại chưa có đề thi
+                  </CardContent>
+                </Card>
+              </Grid>
+            </>
+          )}
           {data &&
             data?.map((test, index) => (
               <Grid item xs={12} sm={6} md={3} key={test.id}>
@@ -124,34 +135,34 @@ export default function TestList() {
             ))}
         </Grid>
         {data && data.length > 0 && (
-        <>
-          <div
-            style={{
-              position: "relative",
-              minHeight: "80px",
-            }}
-          >
-            <ul
+          <>
+            <div
               style={{
-                marginTop: "28px",
-                marginBottom: "10px",
-                position: "absolute",
-                left: "50%",
-                transform: "translate(-50%)",
+                position: "relative",
+                minHeight: "80px",
               }}
             >
-              <PageNavigation
-                page={page}
-                setPage={setPage}
-                totalPages={totalPages}
-              />
-            </ul>
-            <ul style={{ float: "right", marginTop: "12px" }}>
-              <PageSize pageSize={pageSize} setPageSize={setPageSize} />
-            </ul>
-          </div>
-        </>
-      )}
+              <ul
+                style={{
+                  marginTop: "28px",
+                  marginBottom: "10px",
+                  position: "absolute",
+                  left: "50%",
+                  transform: "translate(-50%)",
+                }}
+              >
+                <PageNavigation
+                  page={page}
+                  setPage={setPage}
+                  totalPages={totalPages}
+                />
+              </ul>
+              <ul style={{ float: "right", marginTop: "12px" }}>
+                <PageSize pageSize={pageSize} setPageSize={setPageSize} />
+              </ul>
+            </div>
+          </>
+        )}
       </Box>
     </Container>
   );

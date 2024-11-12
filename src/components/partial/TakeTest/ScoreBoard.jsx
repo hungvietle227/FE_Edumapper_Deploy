@@ -1,4 +1,3 @@
-// src/components/ScoreBoard.js
 import {
   Table,
   TableBody,
@@ -10,18 +9,27 @@ import {
   Typography,
 } from "@mui/material";
 import styles from "./Test.module.css";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import useAuth from "../../../hooks/useAuth";
+import { GetScoreByUserId } from "../../../api/TestManageApi";
 
 export default function ScoreBoard() {
-  const rows = [
-    {
-      id: 1,
-      reading: 6.5,
-      listening: 7,
-      writing: 6.5,
-      speaking: 7,
-      overall: 7,
-    },
-  ];
+  const [data, setData] = useState();
+  const {user} = useAuth();
+  useEffect(() => {
+    const getAllScore = async () => {
+      const response = await GetScoreByUserId(user.id);
+      if (response.ok) {
+        const responseJson = await response.json();
+        const data = responseJson.metaData.testResultDTOs;
+        setData(data);
+      } else {
+        toast.error("Error getting data");
+      }
+    };
+    getAllScore();
+  }, [user]);
 
   return (
     <div style={{display: "flex", justifyContent: "center", width: "100%"}}>
@@ -64,25 +72,25 @@ export default function ScoreBoard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id} className={styles.tableBodyRow}>
+            {data && data?.map((row, index) => (
+              <TableRow key={index} className={styles.tableBodyRow}>
                 <TableCell align="center" className={styles.tableBodyCell}>
-                  {row.id}
+                  {index + 1}
                 </TableCell>
                 <TableCell align="center" className={styles.tableBodyCell}>
-                  {row.reading}
+                  {row.reading ?? "Chưa có"}
                 </TableCell>
                 <TableCell align="center" className={styles.tableBodyCell}>
-                  {row.listening}
+                  {row.listening ?? "Chưa có"}
                 </TableCell>
                 <TableCell align="center" className={styles.tableBodyCell}>
-                  {row.writing}
+                  {row.writing ?? "Chưa có"}
                 </TableCell>
                 <TableCell align="center" className={styles.tableBodyCell}>
-                  {row.speaking}
+                  {row.speaking ?? "Chưa có"}
                 </TableCell>
                 <TableCell align="center" className={styles.tableBodyCell}>
-                  {row.overall}
+                  {row.total ?? "Chưa có"}
                 </TableCell>
               </TableRow>
             ))}

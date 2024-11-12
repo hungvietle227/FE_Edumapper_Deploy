@@ -21,20 +21,33 @@ import { Box, Card, CardContent, IconButton } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import { Bar, Doughnut } from "react-chartjs-2";
 import Chart from "chart.js/auto"; // Import Chart.js
+import useAuth from "../../../../hooks/useAuth";
+import { GetStatistic } from "../../../../api/TestManageApi";
+import { toast } from "react-toastify";
+import { formatPrice } from "../../../../utils/FormatPrice";
 
 const AppView = () => {
   const [domReady, setDomReady] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     setDomReady(true); // DOM đã sẵn sàng
   }, []);
 
-  const [statistics, setStatistics] = useState({
-    tutor: 10,
-    student: 100,
-    transaction: 500,
-    revenue: 10000000,
-  });
+  const [statistics, setStatistics] = useState({});
+
+  useEffect(() => {
+    const getAllScore = async () => {
+      const response = await GetStatistic();
+      if (response.ok) {
+        const responseJson = await response.json();
+        setStatistics(responseJson);
+      } else {
+        toast.error("Error getting data");
+      }
+    };
+    getAllScore();
+  }, [user]);
 
   const [topCourses, setTopCourses] = useState([
     {
@@ -199,7 +212,7 @@ const AppView = () => {
         <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Giáo viên"
-            total={statistics.tutor}
+            total={statistics?.teacher}
             color="success"
             icon={<FontAwesomeIcon icon={faChalkboardUser} />}
           />
@@ -207,8 +220,8 @@ const AppView = () => {
 
         <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Học Viên"
-            total={statistics.student}
+            title="Người dùng"
+            total={statistics?.customer}
             color="info"
             icon={<FontAwesomeIcon icon={faUserGraduate} />}
           />
@@ -217,7 +230,7 @@ const AppView = () => {
         <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Giao Dịch"
-            total={statistics.transaction}
+            total={statistics?.transaction}
             color="warning"
             icon={<FontAwesomeIcon icon={faMoneyBillTransfer} />}
           />
@@ -225,9 +238,9 @@ const AppView = () => {
 
         <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Thu Nhập"
+            title="Doanh thu"
             content="VND"
-            total={statistics.revenue}
+            total={formatPrice(statistics?.revenue)}
             color="error"
             icon={<FontAwesomeIcon icon={faMoneyBillTrendUp} />}
           />

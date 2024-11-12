@@ -239,3 +239,63 @@ export const GetAnswerWritingById = async (userId, examId) => {
     console.log(err);
   }
 };
+
+export const GetAllTestFree = async (page, pageSize, user) => {
+  try {
+    const url = `${baseUrl}/api/Tests/normal-test?UserId=${user}&PageNumber=${page}&PageSize=${pageSize}`;
+    const request = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        //Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    };
+    const response = await fetch(url, request);
+    if (!response.ok) {
+      console.error("There was a problem with API");
+    }
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const GetScoreByUserId = async (user) => {
+  try {
+    const url = `${baseUrl}/api/Tests/user-score?userId=${user}`;
+    const request = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        //Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    };
+    const response = await fetch(url, request);
+    if (!response.ok) {
+      console.error("There was a problem with API");
+    }
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const GetStatistic = async () => {
+  try {
+    const url = `${baseUrl}/api/Statistic`;
+    const request = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        //Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    };
+    const response = await fetch(url, request);
+    if (!response.ok) {
+      console.error("There was a problem with API");
+    }
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -30,7 +30,7 @@ export default function TestListPre() {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(5);
   const [data, setData] = useState();
-  const {user} = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     const getAllQuestion = async () => {
@@ -54,7 +54,6 @@ export default function TestListPre() {
   const handleNavigate = (value) => {
     navigate(`/take-test-premium/${value}`);
   };
-
   return (
     <Container maxWidth="xl">
       <Box sx={{ padding: 4 }}>
@@ -125,41 +124,45 @@ export default function TestListPre() {
             ))}
         </Grid>
         {data && data.length > 0 && (
-        <>
-          <div
-            style={{
-              position: "relative",
-              minHeight: "80px",
-            }}
-          >
-            <ul
+          <>
+            <div
               style={{
-                marginTop: "28px",
-                marginBottom: "10px",
-                position: "absolute",
-                left: "50%",
-                transform: "translate(-50%)",
+                position: "relative",
+                minHeight: "80px",
               }}
             >
-              <PageNavigation
-                page={page}
-                setPage={setPage}
-                totalPages={totalPages}
-              />
-            </ul>
-            <ul style={{ float: "right", marginTop: "12px" }}>
-              <PageSize pageSize={pageSize} setPageSize={setPageSize} />
-            </ul>
-          </div>
-        </>
+              <ul
+                style={{
+                  marginTop: "28px",
+                  marginBottom: "10px",
+                  position: "absolute",
+                  left: "50%",
+                  transform: "translate(-50%)",
+                }}
+              >
+                <PageNavigation
+                  page={page}
+                  setPage={setPage}
+                  totalPages={totalPages}
+                />
+              </ul>
+              <ul style={{ float: "right", marginTop: "12px" }}>
+                <PageSize pageSize={pageSize} setPageSize={setPageSize} />
+              </ul>
+            </div>
+          </>
         )}
-        <hr/>
-        <ScoreBoard />
-        <div className="text-center mt-3">
-          <Button variant="contained" color="secondary">
-            Làm mới
-          </Button>
-        </div>
+        {user?.currentMembership == "Premium Plus Package" && (
+          <>
+            <hr />
+            <ScoreBoard />
+            <div className="text-center mt-3">
+              <Button variant="contained" color="secondary">
+                Làm mới
+              </Button>
+            </div>
+          </>
+        )}
       </Box>
     </Container>
   );
