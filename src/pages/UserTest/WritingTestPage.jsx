@@ -3,7 +3,7 @@ import HeaderTesting from "../../components/global/HeaderTesting";
 import TestProgress from "../../components/partial/UserTesting/PartQuestion";
 import WritingTest from "../../components/partial/UserTesting/WritingTest";
 import { useNavigate, useParams } from "react-router-dom";
-import {  GetWritingTest, SaveAnswerWriting, StartTest, SubmitAnswer } from "../../api/TestManageApi";
+import {  GetWritingTest, SaveAnswerWriting, StartTest } from "../../api/TestManageApi";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import StatusCode from "../../utils/StautsCode";

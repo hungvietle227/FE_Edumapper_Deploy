@@ -34,7 +34,7 @@ export default function WritingTest(prop) {
         resizerClassName={styles.customResizer}
       >
         <Scrollbars>
-          {passages[currentPassage] && (
+          {passages && passages[currentPassage] && (
             <Box style={{ backgroundColor: "#f5f5f5", padding: "15px" }}>
               <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                 Writing Test
@@ -45,17 +45,20 @@ export default function WritingTest(prop) {
                 variant="h5"
                 sx={{ fontWeight: "bold", textAlign: "center" }}
               >
-                {passages[currentPassage].passageTitle}
+                {passages[currentPassage]?.passageTitle}
               </Typography>
               <Typography variant="body2" paragraph>
-                {passages[currentPassage].passageContent}
+                {passages[currentPassage]?.passageContent}
+              </Typography>
+              <Typography variant="body2" paragraph style={{ display: "flex", justifyContent: "center"}}>
+                <img src={passages[currentPassage]?.passageimage} />
               </Typography>
             </Box>
           )}
         </Scrollbars>
 
         <Scrollbars>
-          {passages[currentPassage] && (
+          {passages && passages[currentPassage] && (
             <Box style={{ backgroundColor: "#fff", padding: "15px" }}>
               {passages[currentPassage].subQuestion.map((question, index) => (
                 <Paper

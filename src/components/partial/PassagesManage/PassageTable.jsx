@@ -14,7 +14,6 @@ import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import NoDataPage from "../../global/NoDataPage";
 import DeleteIcon from "@mui/icons-material/Delete";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import ExpandableText from "../../../utils/ExpandableText";
 export default function PassageTable({
   data,
@@ -130,13 +129,6 @@ export default function PassageTable({
                         onClick={() => handleClickDelete(row)}
                       >
                         <DeleteIcon />
-                      </Button>
-                      <Button
-                        variant="text"
-                        sx={{ color: "black" }}
-                        onClick={() => handleClickDelete(row)}
-                      >
-                        <VisibilityIcon />
                       </Button>
                     </StyledTableCell>
                   </StyledTableRow>
