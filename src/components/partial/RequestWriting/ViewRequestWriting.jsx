@@ -13,7 +13,7 @@ export default function ViewRequestWriting() {
   const [data, setData] = useState([]);
   const [openViewDetail, setOpenViewDetail] = useState(false);
   const [dataView, setDataView] = useState();
-
+  const [isAdd, setIsAdd] = useState(false);
   useEffect(() => {
     const fetchRequests = async () => {
       const response = await GetAllWritingRequest(page, pageSize);
@@ -27,7 +27,7 @@ export default function ViewRequestWriting() {
       }
     };
     fetchRequests();
-  }, [page, pageSize]);
+  }, [page, pageSize, isAdd]);
 
   const handleOpenViewDetail = (item) => {
     setOpenViewDetail(true)
@@ -35,10 +35,6 @@ export default function ViewRequestWriting() {
   };
   const handleCloseViewDetail = () => setOpenViewDetail(false);
   
-  const handleAddSchedule = (newSchedule) => {
-    console.log("Lịch hẹn mới:", newSchedule);
-    // Thêm xử lý lưu lịch hẹn ở đây
-  };
 
   return (
     <div
@@ -81,6 +77,7 @@ export default function ViewRequestWriting() {
       <ViewDetailWriting         
         open={openViewDetail}
         onClose={handleCloseViewDetail}
+        setIsAdd={setIsAdd}
         userChoice={dataView}/>
     </div>
   );

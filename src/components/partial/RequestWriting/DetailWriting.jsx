@@ -7,7 +7,7 @@ import { ScoreWriting } from "../../../api/ExamApi";
 import StatusCode from "../../../utils/StautsCode";
 import Messages from "../../../utils/Message";
 
-export default function ViewDetailWriting({ open, onClose, userChoice }) {
+export default function ViewDetailWriting({ open, onClose, userChoice, setIsAdd }) {
   const [data, setData] = useState();
   const [dataSubmit, setDataSubmit] = useState();
 
@@ -45,6 +45,7 @@ export default function ViewDetailWriting({ open, onClose, userChoice }) {
     const response = await ScoreWriting(dataRequest);
     if (response.status == StatusCode.CREATED) {
       toast.success(Messages.SUCCESS.SCORE);
+      setIsAdd(pre => !pre)
       await onClose();
     } else {
       toast.error(Messages.ERROR.BAD_REQUEST);
@@ -104,22 +105,7 @@ export default function ViewDetailWriting({ open, onClose, userChoice }) {
                       ) : (
                         <>
                           <p style={{ paddingRight: "10px" }}>
-                            A paragraph is a basic unit of organization in
-                            writing in which a group of related sentences
-                            develops one main idea. A paragraph can be as short
-                            as one sentence or as long as ten sentences. The
-                            number of sentences is unimportant; however, the
-                            paragraph should be long enough to develop the main
-                            idea clearly.
-                          </p>
-                          <p>
-                            A paragraph is a basic unit of organization in
-                            writing in which a group of related sentences
-                            develops one main idea. A paragraph can be as short
-                            as one sentence or as long as ten sentences. The
-                            number of sentences is unimportant; however, the
-                            paragraph should be long enough to develop the main
-                            idea clearly.
+                            Thí sinh bỏ trắng phần thi này.
                           </p>
                         </>
                       )}
