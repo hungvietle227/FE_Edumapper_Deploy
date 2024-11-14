@@ -98,7 +98,7 @@ const FileListening = (pros) => {
           // src={
           //   passages?.PassageContent?.AudioClip || "/src/assets/thienlyoi.mp3"
           // } // Đường dẫn tới file âm thanh của bạn
-          src={`https://localhost:7228/api/Passages/files?fileName=${passages.listeningFile}`}
+          src={`https://edumapper.duckdns.org/api/Passages/files?fileName=${passages.listeningFile}`}
           onTimeUpdate={handleTimeUpdate}
           onLoadedMetadata={handleAudioLoaded}
         />
