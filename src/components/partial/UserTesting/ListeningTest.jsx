@@ -21,7 +21,7 @@ export default function ListeningTest(pros) {
   let titleFillBlank = false;
 
   return (
-    <SplitPane split="vertical" minSize={50} defaultSize="100%">
+    <SplitPane split="vertical" minSize={50} defaultSize="100%" style={{paddingBottom: "7rem", height: "auto"}}>
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "60vh" }}>
       {passages[currentPassage] && (
         <div style={{ paddingTop: "1rem", background: "#fff", paddingBottom: "1rem" }}>
