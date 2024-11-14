@@ -107,7 +107,7 @@ const TestResult = () => {
                     }}
                   >
                     <Typography textAlign={"justify"} variant="body1">
-                      <b>Câu {index + 1}: </b> {section.questionText}
+                      <b>Câu {section.questionIndex}:</b> {section.questionText}
                     </Typography>
                     <Typography textAlign={"left"} variant="body2" sx={{ marginTop: 2, fontSize: "1rem" }}>
                       <b className="text-base">Đáp án là:{" "}</b>
