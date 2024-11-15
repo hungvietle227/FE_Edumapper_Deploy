@@ -71,7 +71,6 @@ export default function CustomerPage() {
           }}
           className="p-4 overflow-y-auto"
         >
-          <FlowAccount />
           <CustomerProfile />
         </div>
       </div>

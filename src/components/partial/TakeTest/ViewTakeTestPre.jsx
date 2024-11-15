@@ -102,6 +102,7 @@ export default function ViewTakeTestPre() {
               <Typography variant="h6" mb={4}>
                 Listening
               </Typography>
+              {user?.currentMembership == "Premium Plus Package" && (
               <Button
                 variant="contained"
                 style={{ background: "#73fbfd" }}
@@ -110,6 +111,17 @@ export default function ViewTakeTestPre() {
               >
                 Take Test
               </Button>
+              )}
+              {user?.currentMembership == "Premium Package" && (
+                <Button
+                  variant="contained"
+                  disabled
+                  className={styles.testButton}
+                  style={{ fontWeight: "bold" }}
+                >
+                  👑 Premium Plus Test
+                </Button>
+              )}
             </Card>
           </Grid>
 
@@ -120,6 +132,7 @@ export default function ViewTakeTestPre() {
               <Typography variant="h6" mb={4}>
                 Reading
               </Typography>
+              {user?.currentMembership == "Premium Plus Package" && (
               <Button
                 variant="contained"
                 color="secondary"
@@ -129,6 +142,17 @@ export default function ViewTakeTestPre() {
               >
                 Take Test
               </Button>
+              )}
+              {user?.currentMembership == "Premium Package" && (
+                <Button
+                  variant="contained"
+                  disabled
+                  className={styles.testButton}
+                  style={{ fontWeight: "bold" }}
+                >
+                  👑 Premium Plus Test
+                </Button>
+              )}
             </Card>
           </Grid>
 
@@ -139,7 +163,6 @@ export default function ViewTakeTestPre() {
               <Typography variant="h6" mb={4}>
                 Writing
               </Typography>
-              {user?.currentMembership == "Premium Plus Package" && (
                 <Button
                   variant="contained"
                   color="secondary"
@@ -149,17 +172,6 @@ export default function ViewTakeTestPre() {
                 >
                   Take Test
                 </Button>
-              )}
-              {user?.currentMembership == "Premium Package" && (
-                <Button
-                  variant="contained"
-                  disabled
-                  className={styles.testButton}
-                  style={{ fontWeight: "bold" }}
-                >
-                  👑 Premium Plus Test
-                </Button>
-              )}
             </Card>
           </Grid>
 
@@ -170,7 +182,6 @@ export default function ViewTakeTestPre() {
               <Typography variant="h6" mb={4}>
                 Speaking
               </Typography>
-              {user?.currentMembership == "Premium Plus Package" && (
                 <Button
                   variant="contained"
                   color="secondary"
@@ -180,17 +191,6 @@ export default function ViewTakeTestPre() {
                 >
                   Take Test
                 </Button>
-              )}
-              {user?.currentMembership == "Premium Package" && (
-                <Button
-                  variant="contained"
-                  disabled
-                  className={styles.testButton}
-                  style={{ fontWeight: "bold" }}
-                >
-                  👑 Premium Plus Test
-                </Button>
-              )}
             </Card>
           </Grid>
         </Grid>

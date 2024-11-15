@@ -71,7 +71,7 @@ const Contact = () => {
                       onChange={handleChange}
                       fullWidth
                       required
-                      sx={{ backgroundColor: "#fff", borderRadius: 1 }}
+                      sx={{ backgroundColor: "#fff", borderRadius: 1, zIndex: 0 }}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -96,7 +96,7 @@ const Contact = () => {
                       rows={4}
                       fullWidth
                       required
-                      sx={{ backgroundColor: "#fff", borderRadius: 1 }}
+                      sx={{ backgroundColor: "#fff", borderRadius: 1, zIndex: 0 }}
                     />
                   </Grid>
                   <Grid item xs={12}>

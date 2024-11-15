@@ -90,7 +90,7 @@ export default function TestListPre() {
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                       <GroupIcon fontSize="small" sx={{ mr: 1 }} />
-                      <Typography variant="body2">9999</Typography>
+                      <Typography variant="body2">50</Typography>
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                       <ChatBubbleIcon fontSize="small" sx={{ mr: 1 }} />
