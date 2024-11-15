@@ -86,15 +86,13 @@ export default function TestListPre() {
                     </Typography>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                       <AccessTimeIcon fontSize="small" sx={{ mr: 1 }} />
-                      <Typography variant="body2">60 phút</Typography>
+                      <Typography variant="body2">Tùy đề thi</Typography>
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                       <GroupIcon fontSize="small" sx={{ mr: 1 }} />
-                      <Typography variant="body2">50</Typography>
                     </Box>
                     <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                       <ChatBubbleIcon fontSize="small" sx={{ mr: 1 }} />
-                      <Typography variant="body2">{index + 10}</Typography>
                     </Box>
                     <Typography variant="body2">
                       {test.type} phần thi
