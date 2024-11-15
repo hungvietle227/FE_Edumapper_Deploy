@@ -70,12 +70,12 @@ export default function ViewRequestListening() {
   const handleAddScore = async (newSchedule) => {
     const data = {
       ...newSchedule,
-      userId: dataDetail?.userEmail,
+      userId: dataDetail?.userId,
       examId: dataDetail?.examId,
     };
     const response = await TeacherScoreSpeaking(data);
     const responseJson = await response.json();
-    if (responseJson.statusCode == StatusCode.CREATED) {
+    if (responseJson.statusCode == StatusCode.DELETE) {
       toast.success("Đã chấm điểm thành công");
       setIsAdd((pre) => !pre);
     } else {

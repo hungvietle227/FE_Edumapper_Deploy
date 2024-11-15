@@ -1,6 +1,5 @@
 import {
   Button,
-  Checkbox,
   Table,
   TableBody,
   TableCell,
@@ -12,9 +11,13 @@ import { tableCellClasses } from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import NoDataPage from "../../global/NoDataPage";
-import PendingActionsIcon from '@mui/icons-material/PendingActions';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-export default function RequestTable({ data, handleOpenAddSchedule, handleOpenAddScore }) {
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+export default function RequestTable({
+  data,
+  handleOpenAddSchedule,
+  handleOpenAddScore,
+}) {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -34,7 +37,13 @@ export default function RequestTable({ data, handleOpenAddSchedule, handleOpenAd
       border: 0,
     },
   }));
-  const TableHeader = ["Email thí sinh", "Tên", "Ngày hẹn", "Hành động"];
+  const TableHeader = [
+    "Email thí sinh",
+    "Tên",
+    "Ngày hẹn",
+    "Status",
+    "Hành động",
+  ];
 
   return (
     <div>
@@ -99,39 +108,52 @@ export default function RequestTable({ data, handleOpenAddSchedule, handleOpenAd
                       }}
                       align="center"
                     >
-                      {row.testedDate?.slice(0,10) + row.testedDate?.slice(12,16)}
+                      {row.testedDate?.slice(0, 10) + " - Time: " + row.testedDate?.slice(12, 16)}
                     </StyledTableCell>
                     <StyledTableCell
                       style={{ fontWeight: "600" }}
                       align="center"
                     >
-                      <Button
-                        variant="contained"
-                        color="info"
-                        onClick={() => handleOpenAddSchedule(row)}
-                        sx={{
-                          color: "white",
-                          borderRadius: "18px",
-                          marginRight: "15px",
-                          fontSize: "10px",
-                        }}
-                      >
-                        <PendingActionsIcon /> Hẹn lịch
-                      </Button>
-                      <Button
-                        variant="contained"
-                        color="success"
-                        onClick={() => handleOpenAddScore(row)}
-                        sx={{
-                          background: "#0b7234",
-                          color: "white",
-                          borderRadius: "18px",
-                          marginRight: "15px",
-                          fontSize: "10px",
-                        }}
-                      >
-                        <CheckCircleIcon /> Chấm điểm
-                      </Button>
+                      {row.status}
+                    </StyledTableCell>
+                    <StyledTableCell
+                      style={{ fontWeight: "600" }}
+                      align="center"
+                    >
+                      {row.status != "Done" && (
+                        <>
+                          <Button
+                            variant="contained"
+                            color="info"
+                            onClick={() => handleOpenAddSchedule(row)}
+                            sx={{
+                              color: "white",
+                              borderRadius: "18px",
+                              marginRight: "15px",
+                              fontSize: "10px",
+                            }}
+                          >
+                            <PendingActionsIcon /> Hẹn lịch
+                          </Button>
+                          <Button
+                            variant="contained"
+                            color="success"
+                            onClick={() => handleOpenAddScore(row)}
+                            sx={{
+                              background: "#0b7234",
+                              color: "white",
+                              borderRadius: "18px",
+                              marginRight: "15px",
+                              fontSize: "10px",
+                            }}
+                          >
+                            <CheckCircleIcon /> Chấm điểm
+                          </Button>
+                        </>
+                      )}
+                      {row.status == "Done" && (
+                        <>Nothing</>
+                      )}
                     </StyledTableCell>
                   </StyledTableRow>
                 );

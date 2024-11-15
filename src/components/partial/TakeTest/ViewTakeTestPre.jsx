@@ -8,7 +8,7 @@ import useAuth from "../../../hooks/useAuth";
 import Messages from "../../../utils/Message";
 import ScheduleSpeaking from "./ScheduleSpeaking";
 import { useState } from "react";
-import { GetSpeakingTest } from "../../../api/TestManageApi";
+import { GetSpeakingTest, StartTest } from "../../../api/TestManageApi";
 import { UserRequestSpeaking } from "../../../api/ExamApi";
 import StatusCode from "../../../utils/StautsCode";
 
@@ -36,8 +36,13 @@ export default function ViewTakeTestPre() {
         ...newSchedule,
         examId,
       };
-      
+
+      const startTest = {
+        examId: examId,
+        userId: user.id
+      }
       const response = await UserRequestSpeaking(scheduleData)
+      await StartTest(startTest)
       const responseJson = await response.json();
       if (responseJson.statusCode == StatusCode.CREATED){
         toast.success('Đặt lịch đến giáo viên thành công')
