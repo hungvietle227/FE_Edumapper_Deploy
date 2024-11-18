@@ -11,6 +11,7 @@ import {
   import styles from "./status.module.css";
   import { styled } from "@mui/material/styles";
   import NoDataPage from "../../global/NoDataPage";
+import { formatPrice } from "../../../utils/FormatPrice";
   export default function TransactionTable({
     data,
   }) {
@@ -34,12 +35,12 @@ import {
       },
     }));
     const TableHeader = [
-      "ID",
       "Số",
       "Thông tin",
       "Ngày",
-      "Số lượng",
+      "Tổng tiền",
       "Trạng thái",
+      "Cổng thanh toán",
       "Email",
     ];
     const StatusType = ["Đang chờ", "Cancel", "Đã thanh toán"];
@@ -82,14 +83,7 @@ import {
                     >
                       <StyledTableCell
                         style={{ fontWeight: "600" }}
-                        component="th"
-                        scope="row"
-                      >
-                        {row.transactionId}
-                      </StyledTableCell>
-                      <StyledTableCell
-                        style={{ fontWeight: "600" }}
-                        align="left"
+                        align="middle"
                       >
                         {row.transactionNumber}
                       </StyledTableCell>
@@ -101,15 +95,15 @@ import {
                       </StyledTableCell>
                       <StyledTableCell
                         style={{ fontWeight: "600" }}
-                        align="left"
+                        align="middle"
                       >
                         {row.transactionDate?.split("T")[0]}
                       </StyledTableCell>
                       <StyledTableCell
                         style={{ fontWeight: "600" }}
-                        align="left"
+                        align="middle"
                       >
-                        {row.amount}
+                        {formatPrice(row.amount)}
                       </StyledTableCell>
                       <StyledTableCell
                         sx={{
@@ -118,7 +112,7 @@ import {
                           paddingRight: "20px",
                         }}
                         style={{ fontWeight: "600" }}
-                        align="left"
+                        align="middle"
                       >
                         {StatusType &&
                           StatusType.map((type, index) => {
@@ -147,7 +141,13 @@ import {
                       </StyledTableCell>
                       <StyledTableCell
                         style={{ fontWeight: "600" }}
-                        align="left"
+                        align="middle"
+                      >
+                        {row.paymentMethod}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        style={{ fontWeight: "600" }}
+                        align="middle"
                       >
                         {row.email}
                       </StyledTableCell>

@@ -20,6 +20,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import useAuth from "../../../hooks/useAuth";
 import { GetAllChat } from "../../../api/ChatApi";
 import { ConnectToSignalR } from "../../../api/HubChat";
+import { toast } from "react-toastify";
 
 export default function ChatForum() {
   const [connection, setConnection] = useState(null);
@@ -53,7 +54,7 @@ export default function ChatForum() {
 
           connection.on(
             "ReceiveMessage",
-            (messageId, userName, content, createdDate) => {
+            (messageId, fullName, content, createdDate) => {
               // Kiểm tra xem tin nhắn đã tồn tại chưa
               setMessages((prevMessages) => {
                 const existingMessage = prevMessages.find(
@@ -62,7 +63,7 @@ export default function ChatForum() {
                 if (!existingMessage) {
                   return [
                     ...prevMessages,
-                    { messageId, userName, content, createdDate },
+                    { messageId, fullName, content, createdDate },
                   ];
                 }
                 return prevMessages; // Không thêm nếu đã tồn tại
@@ -87,7 +88,7 @@ export default function ChatForum() {
           });
 
           connection.on("ReceiveError", (errorMessage) => {
-            alert(errorMessage);
+            toast.error(errorMessage);
           });
         })
         .catch((error) => console.log("Error connecting to SignalR:", error));

@@ -69,12 +69,7 @@ const AppView = () => {
       courseName: "Khóa học ở Ila",
       averageRating: 3.5,
       courseImage: "img/trungtam5.png",
-    },
-    {
-      courseName: "Khóa học ở ngoại ngữ thần đồng",
-      averageRating: 3.5,
-      courseImage: "img/trungtam5.png",
-    },
+    }
   ]);
 
   const [data, setData] = useState([
@@ -141,7 +136,7 @@ const AppView = () => {
     datasets: [
       {
         label: "Users",
-        data: [30, 20, 40, 50, 60, 20, 40],
+        data: [30],
         backgroundColor: "#ff7043",
       },
       {

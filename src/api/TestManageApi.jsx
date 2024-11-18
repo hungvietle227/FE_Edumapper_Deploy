@@ -22,7 +22,7 @@ export const GetAllTest = async (page, pageSize, user) => {
 
 export const GetAllPremiumTest = async (page, pageSize, user) => {
   try {
-    const url = `${baseUrl}/api/Tests?UserId=${user}&PageNumber=${page}&PageSize=${pageSize}`;
+    const url = `${baseUrl}/api/Tests/premium-test?UserId=${user}&PageNumber=${page}&PageSize=${pageSize}`;
     const request = {
       method: "GET",
       headers: {

@@ -55,7 +55,7 @@ export default function ProfilePage() {
                       icon="github fa-lg"
                       style={{ color: "#333333" }}
                     />
-                    <MDBCardText>mdbootstrap</MDBCardText>
+                    <MDBCardText>Không có</MDBCardText>
                   </MDBListGroupItem>
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon
@@ -63,7 +63,7 @@ export default function ProfilePage() {
                       icon="twitter fa-lg"
                       style={{ color: "#55acee" }}
                     />
-                    <MDBCardText>@mdbootstrap</MDBCardText>
+                    <MDBCardText>Không có</MDBCardText>
                   </MDBListGroupItem>
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon
@@ -71,15 +71,15 @@ export default function ProfilePage() {
                       icon="instagram fa-lg"
                       style={{ color: "#ac2bac" }}
                     />
-                    <MDBCardText>mdbootstrap</MDBCardText>
+                    <MDBCardText>Không có</MDBCardText>
                   </MDBListGroupItem>
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                   <MDBIcon style={{marginLeft: "10px"}} fas icon="check fa-lg" />
                     <MDBCardText>
                       {user?.isVerified == true
                         ? "Đã xác thực email"
-                        : user?.roleName == "Admin"
-                        ? "Đã xác thực"
+                        : user?.roleName == "Administrator"
+                        ? "Đã xác thực tài khoản"
                         : "Chưa xác thực email"}
                     </MDBCardText>
                   </MDBListGroupItem>
@@ -159,12 +159,12 @@ export default function ProfilePage() {
                     <div className="d-flex justify-between align-items-center">
                       <p className="mb-0 text-uppercase">
                         <i className="fas fa-cog me-2"></i>{" "}
-                        <span className="text-muted small">Gia Sư Học Tâp</span>
+                        <span className="text-muted small">Edumapper</span>
                       </p>
                       <p className="mb-0 text-uppercase">
                         <MailOutlineIcon />
                         <span className="text-muted small">
-                          Email: contact@giasuhoctap.com
+                          Email: Edumapper@fpt.edu.vn
                         </span>
                         <span className="ms-3 me-4">
                           |{" "}

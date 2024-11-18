@@ -115,8 +115,8 @@ export default function ViewTransaction() {
         <div style={{ fontSize: "30px", fontWeight: "bold" }}>
           Lịch sử giao dịch của tất cả người dùng
         </div>
-      <div style={{ marginTop: "5px", marginBottom: "25px" }}>
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+      <div style={{ marginTop: "20px", marginBottom: "25px", display: "flex", alignItems: "center" }}>
+        <FormControl sx={{width: 200, marginRight: "10px"}} variant="standard">
           <InputLabel id="demo-simple-select-standard-label">
             Trạng thái
           </InputLabel>
@@ -128,10 +128,10 @@ export default function ViewTransaction() {
             label="Trạng thái"
           >
             <MenuItem value="Đã thanh toán">
-              <p>Đã thanh toán</p>
+              Đã thanh toán
             </MenuItem>
             <MenuItem value="Đang chờ">
-              <p>Đang chờ</p>
+              Đang chờ
             </MenuItem>
           </Select>
         </FormControl>
