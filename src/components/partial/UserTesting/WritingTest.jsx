@@ -8,7 +8,7 @@ export default function WritingTest(prop) {
   const { passages, currentPassage, selectedAnswers, handleAnswerChange } =
     prop;
   const [wordCounts, setWordCounts] = useState({});
-
+  console.log(passages);
   // Hàm để đếm số từ
   const countWords = (text) => {
     return text ? text.trim().split(/\s+/).length : 0;
@@ -34,40 +34,39 @@ export default function WritingTest(prop) {
         resizerClassName={styles.customResizer}
       >
         <Scrollbars>
+        <div style={{ height: "100%", backgroundColor: "#f5f5f5"}}>
           {passages && passages[currentPassage] && (
             <Box style={{ backgroundColor: "#f5f5f5", padding: "15px" }}>
-              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                Writing Test
-              </Typography>
               <Typography
-                mt={2}
-                mb={2}
+                mt={3}
+                mb={3}
                 variant="h5"
                 sx={{ fontWeight: "bold", textAlign: "center" }}
               >
                 {passages[currentPassage]?.passageTitle}
               </Typography>
-              <Typography variant="body2" paragraph>
+              <Typography variant="body2" paragraph fontSize={16} mb={3}>
                 {passages[currentPassage]?.passageContent}
               </Typography>
               <Typography variant="body2" paragraph style={{ display: "flex", justifyContent: "center"}}>
-                <img src={passages[currentPassage]?.passageimage} />
+                <img width={600} src={passages[currentPassage]?.passageImage} />
               </Typography>
             </Box>
           )}
+          </div>
         </Scrollbars>
 
         <Scrollbars>
           {passages && passages[currentPassage] && (
             <Box style={{ backgroundColor: "#fff", padding: "15px" }}>
-              {passages[currentPassage].subQuestion.map((question, index) => (
+              {passages[currentPassage].subQuestion.map((question) => (
                 <Paper
                   elevation={2}
                   sx={{ padding: 2, mb: 2 }}
                   key={question.questionId}
                 >
-                  <Typography variant="body1">
-                    {index + 1}. {question.questionText}
+                  <Typography variant="body1" mt={1} mb={2}>
+                   {question.questionText}
                   </Typography>
 
                   {/* Ô nhập liệu cho câu trả lời của Task 1 và Task 2 */}
@@ -76,7 +75,7 @@ export default function WritingTest(prop) {
                     variant="outlined"
                     multiline
                     rows={18}
-                    placeholder={`Your answer (minimum ${question.WordLimit} words)`}
+                    placeholder={`Fill your answer`}
                     value={
                       selectedAnswers.find(
                         (answer) => answer.questionId === question.questionId

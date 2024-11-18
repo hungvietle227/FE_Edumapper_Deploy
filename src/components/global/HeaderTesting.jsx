@@ -11,9 +11,11 @@ import {
   MDBModalTitle,
 } from "mdb-react-ui-kit";
 import { Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const HeaderTesting = (pros) => {
   const { handleSubmit, timeRemaining, setTimeRemaining } = pros;
+  const navigate = useNavigate();
   const [showExitModal, setShowExitModal] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,8 +34,8 @@ const HeaderTesting = (pros) => {
 
   useEffect(() => {
     // Cảnh báo khi còn 30 phút
-    if (timeRemaining === 1800) {
-      toast.warning("Còn 30 phút nữa là hết giờ!");
+    if (timeRemaining === 1200) {
+      toast.warning("Còn 20 phút nữa là hết giờ!");
     }
     // Cảnh báo khi còn 10 phút
     if (timeRemaining === 600) {
@@ -48,8 +50,8 @@ const HeaderTesting = (pros) => {
   };
 
   const handleExitConfirm = () => {
-    setShowExitModal(false); // Đóng modal
-    handleSubmit(); // Gọi hàm submit khi xác nhận thoát
+    setShowExitModal(false);
+    navigate('/')
   };
 
   const toggleExitModal = () => setShowExitModal(!showExitModal); // Hàm đóng/mở modal

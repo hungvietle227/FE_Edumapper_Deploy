@@ -17,7 +17,6 @@ import { Scrollbars } from "react-custom-scrollbars";
 export default function ReadingTest(pros) {
   const { passages, currentPassage, selectedAnswers, handleAnswerChange } =
     pros;
-  let titleFillBlank = false;
   return (
     <SplitPane
       split="vertical"
@@ -32,19 +31,16 @@ export default function ReadingTest(pros) {
         <div style={{ height: "100%", backgroundColor: "#f5f5f5"}}>
         {passages && passages[currentPassage] && (
           <Box style={{ backgroundColor: "#f5f5f5", padding: "15px" }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-              Reading Test
+            <Typography mt={3} fontSize={17} mb={3} variant="body2" paragraph textAlign={"justify"}>
+              {passages[currentPassage].passageContent}
             </Typography>
             <Typography
               mt={2}
-              mb={2}
+              mb={4}
               variant="h5"
               sx={{ fontWeight: "bold", textAlign: "center" }}
             >
               {passages[currentPassage].passageTitle}
-            </Typography>
-            <Typography style={{fontSize: "16px"}} variant="body2" paragraph textAlign={"justify"}>
-              {passages[currentPassage].passageContent}
             </Typography>
             {passages &&
               passages[currentPassage]?.sections != [] &&

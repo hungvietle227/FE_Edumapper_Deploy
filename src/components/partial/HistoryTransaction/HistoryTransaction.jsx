@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./HistoryTransaction.module.css";
 import useAuth from "../../../hooks/useAuth";
 import PageNavigation from "../../global/PageNavigation";
 import PageSize from "../../global/PageSize";
 import { GetTransactionByUser } from "../../../api/TransactionApi";
-import { toast } from "react-toastify";
 import {
   MDBBadge,
   MDBTable,
@@ -13,6 +12,7 @@ import {
 } from "mdb-react-ui-kit";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { formatPrice } from "../../../utils/FormatPrice";
+import StatusCode from "../../../utils/StautsCode";
 
 const HistoryTransaction = () => {
   const [transactions, setTransactions] = useState([]);
@@ -24,25 +24,15 @@ const HistoryTransaction = () => {
 
   useEffect(() => {
     const fetchTransactions = async () => {
-      try {
-        const data = await GetTransactionByUser(
-          page,
-          pageSize,
-          user?.id,
-          status // Pass status to API call
-        );
-        const dataJson = await data.json();
-        console.log(dataJson);
-        if (data) {
-          setTransactions(dataJson.metaData.data);
-          setTotalPages(dataJson.metaData.totalPages);
-        }
-      } catch (error) {
-        toast.error("Lỗi khi lấy dữ liệu giao dịch.");
+      const data = await GetTransactionByUser(page, pageSize, user?.id, status);
+      const dataJson = await data.json();
+      if (dataJson.statusCode == StatusCode.SUCCESS) {
+        setTransactions(dataJson.metaData.data);
+        setTotalPages(dataJson.metaData.totalPages);
       }
     };
     fetchTransactions();
-  }, [user?.id, page, pageSize, status]); // Add status to dependencies
+  }, [user?.id, page, pageSize, status]);
 
   const getStatusBadge = (transactionStatus) => {
     switch (transactionStatus) {
@@ -67,20 +57,20 @@ const HistoryTransaction = () => {
           <Select
             labelId="status-label"
             id="status"
-            value={status}
+            value={status || ""}
             label="Lọc theo trạng thái"
             onChange={(e) => setStatus(e.target.value)} // Update selected status
           >
             <MenuItem value="">Tất cả</MenuItem>
-            <MenuItem value="Paid">Đã thanh toán</MenuItem>
-            <MenuItem value="Success">Thành công</MenuItem>
-            <MenuItem value="Fail">Thất bại</MenuItem>
+            <MenuItem value="Đã thanh toán">Đã thanh toán</MenuItem>
+            <MenuItem value="Thành công">Thành công</MenuItem>
+            <MenuItem value="Thất bại">Thất bại</MenuItem>
           </Select>
         </FormControl>
       </div>
 
       <MDBTable striped hover>
-        <MDBTableHead style={{fontSize: "medium"}}>
+        <MDBTableHead style={{ fontSize: "medium" }}>
           <tr>
             <th>Ngày</th>
             <th>Hình thức</th>

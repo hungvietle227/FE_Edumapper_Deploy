@@ -14,7 +14,7 @@ import * as signalR from "@microsoft/signalr";
 // };
 export const ConnectToSignalR = () => {
   const newConnection = new signalR.HubConnectionBuilder()
-    .withUrl(`https://localhost:7228/chatHub`, {
+    .withUrl(`https://edumapper.duckdns.org/chatHub`, {
       skipNegotiation: true,
       transport: signalR.HttpTransportType.WebSockets,
     })

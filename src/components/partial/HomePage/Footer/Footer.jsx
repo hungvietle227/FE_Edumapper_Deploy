@@ -1,29 +1,15 @@
-import React from "react";
 import {
   Typography,
   Button,
   Box,
   Container,
   Grid,
-  ThemeProvider,
-  createTheme,
   Divider,
 } from "@mui/material";
 import logoEdu from "/img/logoEdu.png";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ShareIcon from "@mui/icons-material/Share";
 import { Image } from "@chakra-ui/react";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#4267B2", // Facebook blue
-    },
-    secondary: {
-      main: "#f0f2f5", // Light gray background
-    },
-  },
-});
 
 const LikeShareButtons = () => {
   return (
@@ -33,7 +19,7 @@ const LikeShareButtons = () => {
         startIcon={<ThumbUpAltIcon />}
         sx={{ mr: 1, borderRadius: 20 }}
       >
-        Like 40k
+        Like
       </Button>
       <Button
         variant="contained"
@@ -113,7 +99,7 @@ const Footer = (pros) => {
             <FooterSection
               title="Liên hệ"
               items={[
-                "Địa chỉ: 32, 23 Phú hữu, Quận 9",
+                "Địa chỉ: Đường D1, Long Thạnh Mỹ, Thành Phố Thủ Đức",
                 "Điện thoại: 01234559809",
                 "Email: Edumaper@gmail.com",
               ]}

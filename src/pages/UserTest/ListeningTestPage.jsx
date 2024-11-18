@@ -15,7 +15,7 @@ function ListeningTestPage() {
   const [currentPassage, setCurrentPassage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [examId, setExamId] = useState("");
-  const [timeRemaining, setTimeRemaining] = useState(3600); // 3600s = 60 minutes in seconds
+  const [timeRemaining, setTimeRemaining] = useState(1800); 
   const navigate = useNavigate();
   const {user} = useAuth();
   useEffect(() => {

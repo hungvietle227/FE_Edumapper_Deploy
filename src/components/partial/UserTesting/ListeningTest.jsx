@@ -18,7 +18,6 @@ import SplitPane from "react-split-pane";
 export default function ListeningTest(pros) {
   const { passages, currentPassage, selectedAnswers, handleAnswerChange, isPlaying, setIsPlaying } = pros;
 
-  let titleFillBlank = false;
 
   return (
     <SplitPane split="vertical" minSize={50} defaultSize="100%" style={{paddingBottom: "7rem", height: "auto"}}>
@@ -31,14 +30,14 @@ export default function ListeningTest(pros) {
       <Container maxWidth="xl" sx={{ flex: 1, mt: 4, mb: 4 }}>
         {passages[currentPassage] && (
           <Box>
-            <Typography variant="h5" textAlign="center" sx={{ mb: 2 }}>
+            <Typography variant="h5" textAlign="center" sx={{ mb: 4 }}>
               {passages[currentPassage].passageTitle}
             </Typography>
 
             {/* Loop through all SubQuestions */}
             {passages && passages[currentPassage]?.subQuestion?.map((question, index) => (
-              <Paper elevation={2} sx={{ padding: 2, mb: 2 }} key={question.questionId}>
-                <Typography variant="body1">
+              <Paper elevation={2} sx={{ padding: 2, mb: 4 }} key={question.questionId}>
+                <Typography variant="body1" mb={3}>
                   {index + 1}. {question.questionText}
                 </Typography>
 

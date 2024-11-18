@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Container,
   TextField,
@@ -10,7 +10,7 @@ import {
   CardContent,
 } from "@mui/material";
 import { LocationOn, Phone, Email } from "@mui/icons-material";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -35,6 +35,7 @@ const Contact = () => {
       email: "",
       message: "",
     });
+    toast.success("Gửi thành công")
   };
 
   return (
@@ -53,11 +54,11 @@ const Contact = () => {
             <Box
               sx={{ backgroundColor: "#fef4f4", p: 4, borderRadius: "10px" }}
             >
-              <Typography variant="h5" gutterBottom>
+              <Typography variant="h4" gutterBottom>
                 Bạn cần hỗ trợ?
               </Typography>
-              <Typography variant="body1" gutterBottom>
-                Trung tâm tiếng Anh của chúng tôi luôn sẵn sàng giúp bạn. Hãy
+              <Typography variant="body1" mb={2} gutterBottom>
+                Cộng đồng Edumapper của chúng tôi luôn sẵn sàng giúp bạn. Hãy
                 điền thông tin để chúng tôi có thể hỗ trợ bạn trong thời gian
                 sớm nhất.
               </Typography>
@@ -136,7 +137,7 @@ const Contact = () => {
             <Card sx={{ backgroundColor: "#fef4f4" }}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
-                  Trung tâm tiếng Anh ABC
+                  Cộng đồng Edumaper
                 </Typography>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item>
@@ -144,7 +145,7 @@ const Contact = () => {
                   </Grid>
                   <Grid item>
                     <Typography variant="body2">
-                      Số 123 Đường ABC, Quận XYZ, TP.HCM
+                    Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Hồ Chí Minh
                     </Typography>
                   </Grid>
                 </Grid>
@@ -154,7 +155,7 @@ const Contact = () => {
                   </Grid>
                   <Grid item>
                     <Typography variant="body2">
-                      Điện thoại: 0909 123 456
+                      Điện thoại: 028 7300 5588
                     </Typography>
                   </Grid>
                 </Grid>
@@ -164,7 +165,7 @@ const Contact = () => {
                   </Grid>
                   <Grid item>
                     <Typography variant="body2">
-                      Email: info@englishcenter.com
+                      Email: edumapper@fpt.edu.vn
                     </Typography>
                   </Grid>
                 </Grid>
