@@ -74,8 +74,7 @@ const Checkout = () => {
       if (response.status == StatusCode.CREATED) {
         const responseData = await response.json();
         if (responseData.statusCode == StatusCode.CREATED && methodPayment == "PAYOS") {
-          //window.location.replace(responseData.metaData.checkoutUrl);
-          console.log("Đây là thành toán PayOS nè");
+          window.location.replace(responseData.metaData.checkoutUrl);
         }else if (responseData.statusCode == StatusCode.CREATED && methodPayment == "Vnpay"){
           window.location.replace(responseData.metaData);
         } else {
