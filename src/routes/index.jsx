@@ -212,7 +212,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/list-test",
-    element: <TestListPage />,
+    element: <RequireAuth><TestListPage /></RequireAuth>,
     errorElement: <ErrorException/>
   },
   {

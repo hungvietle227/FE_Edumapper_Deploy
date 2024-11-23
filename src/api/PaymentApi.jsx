@@ -1,5 +1,6 @@
 // Base Url for API
-const baseUrl = import.meta.env.VITE_API_HOST;
+// const baseUrl = import.meta.env.VITE_API_HOST;
+const baseUrl = "https://localhost:7228";
 export const CreatePayment = async (value) => {
     try {
         const response = await fetch(`${baseUrl}/api/Payment`, {
