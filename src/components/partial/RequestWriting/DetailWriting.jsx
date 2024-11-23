@@ -36,7 +36,8 @@ export default function ViewDetailWriting({ open, onClose, userChoice, setIsAdd 
     };
     getAllData();
   }, [userChoice]);
-
+  console.log(data);
+  
   const handleSubmit = async () => {
     console.log("Data submitted:", { listAnswerDTO: dataSubmit });
     const dataRequest = {
@@ -113,7 +114,8 @@ export default function ViewDetailWriting({ open, onClose, userChoice, setIsAdd 
                   </Grid>
                   <Grid item xs={6}>
                     <Box>
-                      <Typography>Câu hỏi: {line.questionText}</Typography>
+                      <Typography mb={1}><b>Câu hỏi:</b> {line.questionText}</Typography>
+                      <img style={{marginBottom: "10px"}} width={350} src={line.passageImage}></img>
                       <TextField
                         label="Điểm bài viết"
                         type="number"

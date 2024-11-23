@@ -48,7 +48,7 @@ const TestResult = () => {
               Tổng điểm
             </Typography>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              {dataResult?.score} điểm
+              {dataResult?.score}
             </Typography>
           </Box>
         </Grid>

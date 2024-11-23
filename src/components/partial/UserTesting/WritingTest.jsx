@@ -8,7 +8,6 @@ export default function WritingTest(prop) {
   const { passages, currentPassage, selectedAnswers, handleAnswerChange } =
     prop;
   const [wordCounts, setWordCounts] = useState({});
-  console.log(passages);
   // Hàm để đếm số từ
   const countWords = (text) => {
     return text ? text.trim().split(/\s+/).length : 0;

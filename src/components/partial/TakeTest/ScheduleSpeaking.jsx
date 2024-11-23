@@ -6,6 +6,7 @@ export default function ScheduleSpeaking({ open, onClose, onAdd }) {
   const {user} = useAuth();
   const getCurrentDateTime = () => {
     const now = new Date();
+    now.setDate(now.getDate() + 1);
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
@@ -15,6 +16,7 @@ export default function ScheduleSpeaking({ open, onClose, onAdd }) {
   };
 
   const [scheduleDate, setScheduleDate] = useState(getCurrentDateTime());
+  const currentDateTime = getCurrentDateTime();
 
   const handleAdd = () => {
     const newSchedule = {
@@ -40,6 +42,9 @@ export default function ScheduleSpeaking({ open, onClose, onAdd }) {
           InputLabelProps={{ shrink: true }}
           value={scheduleDate}
           onChange={(e) => setScheduleDate(e.target.value)}
+          inputProps={{
+            min: currentDateTime,
+          }}
         />
         <div className="flex justify-end">
         <Button variant="contained" onClick={handleAdd} sx={{ mt: 2}}>
